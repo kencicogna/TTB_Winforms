@@ -32,10 +32,10 @@
             this.lblMainTitle = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageMainInventory = new System.Windows.Forms.TabPage();
+            this.userControlInventory1 = new ProductManager.Views.UserControlInventory();
             this.tabPageMainShipping = new System.Windows.Forms.TabPage();
             this.tabPageMainPickList = new System.Windows.Forms.TabPage();
             this.tabPageMainAdmin = new System.Windows.Forms.TabPage();
-            this.userControlInventory1 = new ProductManager.Views.UserControlInventory();
             this.pnlMainHeader.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageMainInventory.SuspendLayout();
@@ -90,6 +90,17 @@
             this.tabPageMainInventory.Text = "Inventory";
             this.tabPageMainInventory.UseVisualStyleBackColor = true;
             // 
+            // userControlInventory1
+            // 
+            this.userControlInventory1.BackColor = System.Drawing.SystemColors.Control;
+            this.userControlInventory1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlInventory1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlInventory1.Location = new System.Drawing.Point(3, 3);
+            this.userControlInventory1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.userControlInventory1.Name = "userControlInventory1";
+            this.userControlInventory1.Size = new System.Drawing.Size(990, 545);
+            this.userControlInventory1.TabIndex = 0;
+            // 
             // tabPageMainShipping
             // 
             this.tabPageMainShipping.Location = new System.Drawing.Point(4, 29);
@@ -117,17 +128,6 @@
             this.tabPageMainAdmin.TabIndex = 3;
             this.tabPageMainAdmin.Text = "Settings";
             this.tabPageMainAdmin.UseVisualStyleBackColor = true;
-            // 
-            // userControlInventory1
-            // 
-            this.userControlInventory1.BackColor = System.Drawing.SystemColors.Control;
-            this.userControlInventory1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlInventory1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userControlInventory1.Location = new System.Drawing.Point(3, 3);
-            this.userControlInventory1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.userControlInventory1.Name = "userControlInventory1";
-            this.userControlInventory1.Size = new System.Drawing.Size(990, 545);
-            this.userControlInventory1.TabIndex = 0;
             // 
             // MainForm
             // 
