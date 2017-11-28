@@ -33,10 +33,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlSearchMatches = new System.Windows.Forms.Panel();
             this.tlpImageMatches = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlSearchMatches.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -60,7 +60,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(3, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(747, 85);
+            this.groupBox1.Size = new System.Drawing.Size(747, 63);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -93,17 +93,17 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Searching";
             // 
-            // panel2
+            // pnlSearchMatches
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pnlSearchMatches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.tlpImageMatches);
-            this.panel2.Controls.Add(this.listBox1);
-            this.panel2.Location = new System.Drawing.Point(14, 118);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(730, 480);
-            this.panel2.TabIndex = 3;
+            this.pnlSearchMatches.Controls.Add(this.tlpImageMatches);
+            this.pnlSearchMatches.Controls.Add(this.listBox1);
+            this.pnlSearchMatches.Location = new System.Drawing.Point(14, 87);
+            this.pnlSearchMatches.Name = "pnlSearchMatches";
+            this.pnlSearchMatches.Size = new System.Drawing.Size(730, 511);
+            this.pnlSearchMatches.TabIndex = 3;
             // 
             // tlpImageMatches
             // 
@@ -124,7 +124,7 @@
             this.tlpImageMatches.RowCount = 2;
             this.tlpImageMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpImageMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageMatches.Size = new System.Drawing.Size(723, 398);
+            this.tlpImageMatches.Size = new System.Drawing.Size(723, 429);
             this.tlpImageMatches.TabIndex = 2;
             // 
             // UserControlInventory
@@ -132,13 +132,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlSearchMatches);
             this.Controls.Add(this.groupBox1);
             this.Name = "UserControlInventory";
             this.Size = new System.Drawing.Size(759, 601);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.pnlSearchMatches.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -148,7 +148,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlSearchMatches;
         private System.Windows.Forms.TableLayoutPanel tlpImageMatches;
     }
 }
