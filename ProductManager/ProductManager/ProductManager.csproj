@@ -48,10 +48,32 @@
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IApplicationEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
+    <Compile Include="Events\InventoryShowProductEditorView.cs" />
+    <Compile Include="Events\InventoryShowSearchResultView.cs" />
     <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\InventorySearch.cs" />
     <Compile Include="Models\InventoryView.cs" />
+    <Compile Include="Presenters\InventoryPresenter.cs" />
     <Compile Include="Presenters\MainFormPresenter.cs" />
+    <Compile Include="Repository\InventoryDAL.cs" />
+    <Compile Include="Views\UCInventoryProductEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UCInventoryProductEditor.Designer.cs">
+      <DependentUpon>UCInventoryProductEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCInventorySearchBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UCInventorySearchBar.Designer.cs">
+      <DependentUpon>UCInventorySearchBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCInventorySearchResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UCInventorySearchResults.Designer.cs">
+      <DependentUpon>UCInventorySearchResults.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControlInventory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +118,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\UCInventoryProductEditor.resx">
+      <DependentUpon>UCInventoryProductEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UCInventorySearchBar.resx">
+      <DependentUpon>UCInventorySearchBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UCInventorySearchResults.resx">
+      <DependentUpon>UCInventorySearchResults.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControlInventory.resx">
       <DependentUpon>UserControlInventory.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,7 +153,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repository\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\missing_128x128.jpg" />

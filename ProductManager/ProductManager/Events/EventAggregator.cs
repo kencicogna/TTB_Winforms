@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace InventoryTest.Events
+namespace ProductManager.Events
 {
     class EventAggregator : IEventAggregator
     {

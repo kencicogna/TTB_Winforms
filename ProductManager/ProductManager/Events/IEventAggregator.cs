@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InventoryTest.Events
+namespace ProductManager.Events
 {
     public interface IEventAggregator
     {

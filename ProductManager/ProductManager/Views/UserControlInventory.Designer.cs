@@ -29,126 +29,62 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlSearchMatches = new System.Windows.Forms.Panel();
-            this.tlpImageMatches = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1.SuspendLayout();
-            this.pnlSearchMatches.SuspendLayout();
+            this.ucInventorySearchBar1 = new ProductManager.Views.UCInventorySearchBar();
+            this.ucInventoryProductEditor1 = new ProductManager.Views.UCInventoryProductEditor();
+            this.ucInventorySearchResults1 = new ProductManager.Views.UCInventorySearchResults();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.AcceptsReturn = true;
-            this.textBox1.AcceptsTab = true;
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(11, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(730, 20);
-            this.textBox1.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.textBox1, "Enter UPC, SKU, or any part of the title");
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(3, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(747, 63);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "item 1",
-            "item 2",
-            "item 3",
-            "item 4",
-            "item 5",
-            "item 6",
-            "item 1",
-            "item 2",
-            "item 3",
-            "item 4",
-            "item 5",
-            "item 6"});
-            this.listBox1.Location = new System.Drawing.Point(3, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(724, 69);
-            this.listBox1.TabIndex = 1;
             // 
             // toolTip1
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Searching";
             // 
-            // pnlSearchMatches
+            // ucInventorySearchBar1
             // 
-            this.pnlSearchMatches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ucInventorySearchBar1.Location = new System.Drawing.Point(3, 0);
+            this.ucInventorySearchBar1.Name = "ucInventorySearchBar1";
+            this.ucInventorySearchBar1.Size = new System.Drawing.Size(753, 80);
+            this.ucInventorySearchBar1.TabIndex = 4;
+            // 
+            // ucInventoryProductEditor1
+            // 
+            this.ucInventoryProductEditor1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlSearchMatches.Controls.Add(this.tlpImageMatches);
-            this.pnlSearchMatches.Controls.Add(this.listBox1);
-            this.pnlSearchMatches.Location = new System.Drawing.Point(14, 87);
-            this.pnlSearchMatches.Name = "pnlSearchMatches";
-            this.pnlSearchMatches.Size = new System.Drawing.Size(730, 511);
-            this.pnlSearchMatches.TabIndex = 3;
+            this.ucInventoryProductEditor1.Location = new System.Drawing.Point(3, 418);
+            this.ucInventoryProductEditor1.Name = "ucInventoryProductEditor1";
+            this.ucInventoryProductEditor1.Size = new System.Drawing.Size(753, 180);
+            this.ucInventoryProductEditor1.TabIndex = 5;
             // 
-            // tlpImageMatches
+            // ucInventorySearchResults1
             // 
-            this.tlpImageMatches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ucInventorySearchResults1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpImageMatches.ColumnCount = 8;
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.Location = new System.Drawing.Point(4, 79);
-            this.tlpImageMatches.Name = "tlpImageMatches";
-            this.tlpImageMatches.RowCount = 2;
-            this.tlpImageMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageMatches.Size = new System.Drawing.Size(723, 429);
-            this.tlpImageMatches.TabIndex = 2;
+            this.ucInventorySearchResults1.Location = new System.Drawing.Point(3, 86);
+            this.ucInventorySearchResults1.Name = "ucInventorySearchResults1";
+            this.ucInventorySearchResults1.Size = new System.Drawing.Size(753, 295);
+            this.ucInventorySearchResults1.TabIndex = 6;
             // 
             // UserControlInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.pnlSearchMatches);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.ucInventorySearchResults1);
+            this.Controls.Add(this.ucInventoryProductEditor1);
+            this.Controls.Add(this.ucInventorySearchBar1);
             this.Name = "UserControlInventory";
             this.Size = new System.Drawing.Size(759, 601);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.pnlSearchMatches.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Panel pnlSearchMatches;
-        private System.Windows.Forms.TableLayoutPanel tlpImageMatches;
+        private UCInventorySearchBar ucInventorySearchBar1;
+        private UCInventoryProductEditor ucInventoryProductEditor1;
+        private UCInventorySearchResults ucInventorySearchResults1;
     }
 }

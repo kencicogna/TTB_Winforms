@@ -1,4 +1,4 @@
-﻿namespace InventoryTest.Events
+﻿namespace ProductManager.Events
 {
     public interface IApplicationEvent
     {

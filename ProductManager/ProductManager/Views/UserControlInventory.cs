@@ -10,55 +10,45 @@ using System.Windows.Forms;
 
 namespace ProductManager.Views
 {
-    public partial class UserControlInventory : UserControl
+    public interface IInventoryView
     {
+        String BinRack { get; set; }
+        String Cost { get; set; }
+        Image PrimaryPicture { get; set; }
+        String PrimaryPictureURL { get; }
+        String SKU { get; set; }
+        String Title { get; set; }
+        String Variations { get; set; }
+    }
+
+    public partial class UserControlInventory : UserControl, IInventoryView
+    {
+        public string BinRack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Cost { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Image PrimaryPicture { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public string PrimaryPictureURL => throw new NotImplementedException();
+
+        public string SKU { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Title { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Variations { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public UserControlInventory()
         {
             InitializeComponent();
-            //var pb1 = new PictureBox();
-            //pb1.Image = i1;
-            //pb1.Size = new System.Drawing.Size(128, 128);
 
-            //var pb2 = new PictureBox();
-            //pb2.Image = i1;
-            //pb2.Size = new System.Drawing.Size(128, 128);
+        }
 
-            // Initialize Image Boxes
-            var missingImage = Image.FromFile(@"C:\Users\Ken\Documents\GitHub\TTB_Winforms\ProductManager\ProductManager\Images\missing_128x128.jpg");
-            var pictureBoxList = new List<PictureBox>();
-            int idx;
-            for (int row = 0; row < 2; row++)
-            {
-                for (int col = 0; col < 8; col++)
-                {
-                    //idx = (row*8) + col;
-                    var pb = new PictureBox();
-                    pb.Image = missingImage;
-                    pb.Size = new System.Drawing.Size(128, 128);
+        private void btnShowSearchResultsView_Click(object sender, EventArgs e)
+        {
+            ucInventorySearchResults1.Show();
+            ucInventoryProductEditor1.Hide();
+        }
 
-                    //pictureBoxList.Add(pb);
-                    tlpImageMatches.Controls.Add(pb, col, row);
-                }
-            }
-
-
-            //tlpImageMatches.Controls.Add(pb1, 0, 0);
-            //tlpImageMatches.Controls.Add(pb1, 1, 0);
-            //tlpImageMatches.Controls.Add(pb2, 2, 0);
-            //tlpImageMatches.Controls.Add(pb1, 3, 0);
-            //tlpImageMatches.Controls.Add(pb1, 4, 0);
-            //tlpImageMatches.Controls.Add(pb1, 5, 0);
-            //tlpImageMatches.Controls.Add(pb1, 6, 0);
-            //tlpImageMatches.Controls.Add(pb1, 7, 0);
-            //tlpImageMatches.Controls.Add(pb1, 0, 1);
-            //tlpImageMatches.Controls.Add(pb1, 1, 1);
-            //tlpImageMatches.Controls.Add(pb1, 2, 1);
-            //tlpImageMatches.Controls.Add(pb1, 3, 1);
-            //tlpImageMatches.Controls.Add(pb1, 4, 1);
-            //tlpImageMatches.Controls.Add(pb1, 5, 1);
-            //tlpImageMatches.Controls.Add(pb1, 6, 1);
-            //tlpImageMatches.Controls.Add(pb1, 7, 1);
-
+        private void btnShowProductView_Click(object sender, EventArgs e)
+        {
+            ucInventorySearchResults1.Hide();
+            ucInventoryProductEditor1.Show();
         }
     }
 }
