@@ -158,7 +158,11 @@
     <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\dear.png" />
+    <Content Include="Images\fox.png" />
+    <Content Include="Images\missing.jpg" />
     <Content Include="Images\missing_128x128.jpg" />
+    <Content Include="Images\racoon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Threading;
 using System.Drawing;
+using System.IO;
 
 namespace ProductManager.Presenters
 {
@@ -48,8 +49,8 @@ namespace ProductManager.Presenters
 
                 // Create the connectionString
                 // Trusted_Connection is used to denote the connection uses Windows Authentication
-                //conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
-                conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
+                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
+                //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
                 conn.Open();
 
                 // Create the command
@@ -79,7 +80,15 @@ namespace ProductManager.Presenters
                             inventoryItem.Title = "Picture loading...";
                             Thread.Sleep(2000);
 
-                            wc.DownloadFile(url, tempfile);
+                            try
+                            {
+                                wc.DownloadFile(url, tempfile);
+                            }
+                            catch
+                            { 
+                                File.Copy(@"..\..\Images\missing.jpg", tempfile);
+                            }
+
                             using (Image tempimg = Image.FromFile(tempfile))
                             {
                                 inventoryItem.PrimaryPicture = new Bitmap(tempimg);
