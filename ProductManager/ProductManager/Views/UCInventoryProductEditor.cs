@@ -12,8 +12,6 @@ namespace ProductManager.Views
 {
     public interface IInventoryProductEditor
     {
-        void ShowView();
-        void HideView();
     }
 
     public partial class UCInventoryProductEditor : UserControl, IInventoryProductEditor
@@ -23,14 +21,5 @@ namespace ProductManager.Views
             InitializeComponent();
         }
 
-        public void ShowView()
-        {
-             pnlProductEditor.Show();
-        }
-
-        public void HideView()
-        {
-            pnlProductEditor.Hide();
-        }
     }
 }

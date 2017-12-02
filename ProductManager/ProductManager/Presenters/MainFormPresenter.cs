@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProductManager.Views;
+using ProductManager.Events;
 
 namespace ProductManager.Presenters
 {

@@ -83,6 +83,8 @@
             this.tbSearch.Size = new System.Drawing.Size(844, 20);
             this.tbSearch.TabIndex = 1;
             this.toolTip1.SetToolTip(this.tbSearch, "Searches SKU, UPC, and Title");
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // UCInventorySearchBar
             // 

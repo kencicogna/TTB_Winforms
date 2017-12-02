@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductManager.Models
+namespace ProductManager.Events
 {
-    class Inventory
+    class InventorySearchResult : IApplicationEvent
     {
+
     }
 }

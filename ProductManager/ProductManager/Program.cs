@@ -20,15 +20,19 @@ namespace ProductManager
             Application.SetCompatibleTextRenderingDefault(false);
 
             //
-            // Create dependancies
+            // Create Dependancies
             //
 
-            // User Controls / Views / Objects
+            // User Controls / Views / Helper Objects
+            var ucInventorySearchResults = new UCInventorySearchResults();
+            var ucInventoryProductEditor = new UCInventoryProductEditor();
+            var inventoryView = new UCInventoryView(ucInventorySearchResults, ucInventoryProductEditor);
 
             // Presenters
-            
+            inventoryView.Tag = new InventoryPresenter(inventoryView);
+
             // Main Form
-            var mainForm = new MainForm();
+            var mainForm = new MainForm(inventoryView);
             mainForm.Tag = new MainFormPresenter(mainForm);
 
             // Start Application

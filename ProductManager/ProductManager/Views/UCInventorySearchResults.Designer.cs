@@ -28,61 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tlpImageMatches = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tlpImageSearchMatches = new System.Windows.Forms.TableLayoutPanel();
+            this.lbTitleSearchMatches = new System.Windows.Forms.ListBox();
             this.pnlSearchResults = new System.Windows.Forms.Panel();
             this.pnlSearchResults.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tlpImageMatches
+            // tlpImageSearchMatches
             // 
-            this.tlpImageMatches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tlpImageSearchMatches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpImageMatches.ColumnCount = 8;
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageMatches.Location = new System.Drawing.Point(4, 97);
-            this.tlpImageMatches.Name = "tlpImageMatches";
-            this.tlpImageMatches.RowCount = 2;
-            this.tlpImageMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageMatches.Size = new System.Drawing.Size(792, 430);
-            this.tlpImageMatches.TabIndex = 2;
+            this.tlpImageSearchMatches.ColumnCount = 8;
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpImageSearchMatches.Location = new System.Drawing.Point(4, 97);
+            this.tlpImageSearchMatches.Name = "tlpImageSearchMatches";
+            this.tlpImageSearchMatches.RowCount = 2;
+            this.tlpImageSearchMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpImageSearchMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpImageSearchMatches.Size = new System.Drawing.Size(792, 430);
+            this.tlpImageSearchMatches.TabIndex = 2;
             // 
-            // listBox1
+            // lbTitleSearchMatches
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbTitleSearchMatches.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
+            this.lbTitleSearchMatches.FormattingEnabled = true;
+            this.lbTitleSearchMatches.Items.AddRange(new object[] {
             "item 1",
             "item 2",
-            "item 3",
-            "item 4",
-            "item 5",
-            "item 6",
-            "item 1",
-            "item 2",
-            "item 3",
-            "item 4",
-            "item 5",
-            "item 6"});
-            this.listBox1.Location = new System.Drawing.Point(3, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(793, 69);
-            this.listBox1.TabIndex = 1;
+            "item 3"});
+            this.lbTitleSearchMatches.Location = new System.Drawing.Point(3, 3);
+            this.lbTitleSearchMatches.Name = "lbTitleSearchMatches";
+            this.lbTitleSearchMatches.Size = new System.Drawing.Size(793, 82);
+            this.lbTitleSearchMatches.TabIndex = 1;
             // 
             // pnlSearchResults
             // 
-            this.pnlSearchResults.Controls.Add(this.tlpImageMatches);
-            this.pnlSearchResults.Controls.Add(this.listBox1);
+            this.pnlSearchResults.Controls.Add(this.tlpImageSearchMatches);
+            this.pnlSearchResults.Controls.Add(this.lbTitleSearchMatches);
             this.pnlSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSearchResults.Location = new System.Drawing.Point(0, 0);
             this.pnlSearchResults.Name = "pnlSearchResults";
@@ -103,8 +94,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpImageMatches;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TableLayoutPanel tlpImageSearchMatches;
+        private System.Windows.Forms.ListBox lbTitleSearchMatches;
         private System.Windows.Forms.Panel pnlSearchResults;
     }
 }

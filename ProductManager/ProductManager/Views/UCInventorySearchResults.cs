@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProductManager.Models;
 
 namespace ProductManager.Views
 {
     public interface IInventorySearchResults
     {
-        void ShowView();
-        void HideView();
     }
 
     public partial class UCInventorySearchResults : UserControl, IInventorySearchResults
@@ -33,21 +32,41 @@ namespace ProductManager.Views
                     var pb = new PictureBox();
                     pb.Image = missingImage;
                     pb.Size = new System.Drawing.Size(128, 128);
+                    pb.Click += new EventHandler(OnImageClick);
 
-                    tlpImageMatches.Controls.Add(pb, col, row);
+                    tlpImageSearchMatches.Controls.Add(pb, col, row);
                 }
             }
 
         }
 
-        public void ShowView()
+        private void OnImageClick(object sender, EventArgs e)
         {
-            pnlSearchResults.Show();
+            throw new NotImplementedException();
         }
 
-        public void HideView()
+        internal void DisplaySearchResults(InventorySearchResults inventorySearchResults)
         {
-            pnlSearchResults.Hide();
+            lbTitleSearchMatches.Items.Clear();
+            tlpImageSearchMatches.Controls.Clear();
+
+            decimal itemCount = inventorySearchResults.InventoryItems.Count();
+
+            for (var i=0; i < itemCount; i++)
+            {
+                lbTitleSearchMatches.Items.Add(inventorySearchResults.InventoryItems[i].Title);
+
+                var row = (int)Math.Floor(itemCount / 8);
+                var col = (int)itemCount % 8;
+
+                var pb = new PictureBox();
+                pb.Image = inventorySearchResults.InventoryItems[i].PrimaryPicture;
+                pb.Size = new System.Drawing.Size(128, 128);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.Click += new EventHandler(OnImageClick);
+
+                tlpImageSearchMatches.Controls.Add(pb, col, row);
+            }
         }
     }
 }

@@ -48,10 +48,12 @@
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IApplicationEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
+    <Compile Include="Events\InventoryProductSearch.cs" />
+    <Compile Include="Events\InventorySearchResult.cs" />
     <Compile Include="Events\InventoryShowProductEditorView.cs" />
     <Compile Include="Events\InventoryShowSearchResultView.cs" />
-    <Compile Include="Models\Inventory.cs" />
-    <Compile Include="Models\InventorySearch.cs" />
+    <Compile Include="Models\InventoryItem.cs" />
+    <Compile Include="Models\InventorySearchResults.cs" />
     <Compile Include="Models\InventoryView.cs" />
     <Compile Include="Presenters\InventoryPresenter.cs" />
     <Compile Include="Presenters\MainFormPresenter.cs" />
@@ -74,11 +76,11 @@
     <Compile Include="Views\UCInventorySearchResults.Designer.cs">
       <DependentUpon>UCInventorySearchResults.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControlInventory.cs">
+    <Compile Include="Views\UCInventoryView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\UserControlInventory.Designer.cs">
-      <DependentUpon>UserControlInventory.cs</DependentUpon>
+      <DependentUpon>UCInventoryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
@@ -127,8 +129,8 @@
     <EmbeddedResource Include="Views\UCInventorySearchResults.resx">
       <DependentUpon>UCInventorySearchResults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControlInventory.resx">
-      <DependentUpon>UserControlInventory.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UCInventoryView.resx">
+      <DependentUpon>UCInventoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControlPickList.resx">
       <DependentUpon>UserControlPickList.cs</DependentUpon>
