@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.lblMainTitle = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageMainInventory = new System.Windows.Forms.TabPage();
             this.tabPageMainShipping = new System.Windows.Forms.TabPage();
@@ -38,20 +38,15 @@
             this.pbAvatar = new System.Windows.Forms.PictureBox();
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
             this.lblMainHeaderStatus = new System.Windows.Forms.Label();
+            this.toolTipMainForm = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlStatusTextContainer = new System.Windows.Forms.Panel();
             this.tabControlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.tlpMainHeader.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlStatusTextContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblMainTitle
-            // 
-            this.lblMainTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainTitle.Location = new System.Drawing.Point(603, 0);
-            this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(351, 98);
-            this.lblMainTitle.TabIndex = 0;
-            this.lblMainTitle.Text = "The Teaching Toy Box";
-            this.lblMainTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControlMain
             // 
@@ -112,25 +107,27 @@
             // pbAvatar
             // 
             this.pbAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pbAvatar.Image")));
-            this.pbAvatar.Location = new System.Drawing.Point(3, 3);
+            this.pbAvatar.Location = new System.Drawing.Point(0, 0);
+            this.pbAvatar.Margin = new System.Windows.Forms.Padding(0);
             this.pbAvatar.Name = "pbAvatar";
-            this.pbAvatar.Size = new System.Drawing.Size(100, 94);
+            this.pbAvatar.Size = new System.Drawing.Size(100, 100);
             this.pbAvatar.TabIndex = 1;
             this.pbAvatar.TabStop = false;
+            this.toolTipMainForm.SetToolTip(this.pbAvatar, "Do you like my top hat?");
             // 
             // tlpMainHeader
             // 
             this.tlpMainHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpMainHeader.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tlpMainHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(236)))), ((int)(((byte)(240)))));
             this.tlpMainHeader.ColumnCount = 3;
             this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tlpMainHeader.Controls.Add(this.pbAvatar, 0, 0);
-            this.tlpMainHeader.Controls.Add(this.lblMainTitle, 2, 0);
-            this.tlpMainHeader.Controls.Add(this.lblMainHeaderStatus, 1, 0);
+            this.tlpMainHeader.Controls.Add(this.panel1, 1, 0);
             this.tlpMainHeader.Location = new System.Drawing.Point(12, 12);
+            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(0);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
@@ -139,17 +136,45 @@
             // 
             // lblMainHeaderStatus
             // 
-            this.lblMainHeaderStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMainHeaderStatus.AutoSize = true;
+            this.lblMainHeaderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMainHeaderStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainHeaderStatus.Location = new System.Drawing.Point(109, 0);
+            this.lblMainHeaderStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblMainHeaderStatus.MinimumSize = new System.Drawing.Size(360, 70);
             this.lblMainHeaderStatus.Name = "lblMainHeaderStatus";
-            this.lblMainHeaderStatus.Size = new System.Drawing.Size(488, 100);
+            this.lblMainHeaderStatus.Size = new System.Drawing.Size(498, 88);
             this.lblMainHeaderStatus.TabIndex = 2;
-            this.lblMainHeaderStatus.Text = "Hi! I\'ll keep ypu up to date with status changes.";
+            this.lblMainHeaderStatus.Text = "Hi. My name is Coonie, and Im here to assist you with all your Inventory. needs";
             this.lblMainHeaderStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolTipMainForm
+            // 
+            this.toolTipMainForm.AutoPopDelay = 5000;
+            this.toolTipMainForm.InitialDelay = 500;
+            this.toolTipMainForm.IsBalloon = true;
+            this.toolTipMainForm.ReshowDelay = 100;
+            this.toolTipMainForm.ShowAlways = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Controls.Add(this.pnlStatusTextContainer);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(100, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(757, 100);
+            this.panel1.TabIndex = 2;
+            // 
+            // pnlStatusTextContainer
+            // 
+            this.pnlStatusTextContainer.BackColor = System.Drawing.Color.Transparent;
+            this.pnlStatusTextContainer.Controls.Add(this.lblMainHeaderStatus);
+            this.pnlStatusTextContainer.Location = new System.Drawing.Point(62, 6);
+            this.pnlStatusTextContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlStatusTextContainer.Name = "pnlStatusTextContainer";
+            this.pnlStatusTextContainer.Size = new System.Drawing.Size(498, 88);
+            this.pnlStatusTextContainer.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -164,13 +189,13 @@
             this.tabControlMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
             this.tlpMainHeader.ResumeLayout(false);
-            this.tlpMainHeader.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.pnlStatusTextContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblMainTitle;
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPageMainPickList;
         private System.Windows.Forms.TabPage tabPageMainAdmin;
@@ -179,6 +204,9 @@
         private System.Windows.Forms.PictureBox pbAvatar;
         private System.Windows.Forms.TableLayoutPanel tlpMainHeader;
         private System.Windows.Forms.Label lblMainHeaderStatus;
+        private System.Windows.Forms.ToolTip toolTipMainForm;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlStatusTextContainer;
     }
 }
 

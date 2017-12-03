@@ -162,7 +162,9 @@
     <Content Include="Images\fox.png" />
     <Content Include="Images\missing.jpg" />
     <Content Include="Images\missing_128x128.jpg" />
+    <Content Include="Images\owl.png" />
     <Content Include="Images\racoon.jpg" />
+    <Content Include="Images\speechbubble.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

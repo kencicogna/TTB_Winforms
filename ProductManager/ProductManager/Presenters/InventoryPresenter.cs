@@ -77,7 +77,6 @@ namespace ProductManager.Presenters
                         using (var wc = new WebClient())
                         {
                             // Don't keep reloading the picture
-                            inventoryItem.Title = "Picture loading...";
                             Thread.Sleep(2000);
 
                             try

@@ -65,15 +65,17 @@
             "item 1",
             "item 2",
             "item 3"});
-            this.lbTitleSearchMatches.Location = new System.Drawing.Point(3, 3);
+            this.lbTitleSearchMatches.Location = new System.Drawing.Point(0, 0);
+            this.lbTitleSearchMatches.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitleSearchMatches.Name = "lbTitleSearchMatches";
-            this.lbTitleSearchMatches.Size = new System.Drawing.Size(793, 82);
+            this.lbTitleSearchMatches.Size = new System.Drawing.Size(799, 95);
             this.lbTitleSearchMatches.TabIndex = 1;
+            this.lbTitleSearchMatches.MouseHover += new System.EventHandler(this.lbTitleSearchMatches_MouseHover);
             // 
             // pnlSearchResults
             // 
-            this.pnlSearchResults.Controls.Add(this.tlpImageSearchMatches);
             this.pnlSearchResults.Controls.Add(this.lbTitleSearchMatches);
+            this.pnlSearchResults.Controls.Add(this.tlpImageSearchMatches);
             this.pnlSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSearchResults.Location = new System.Drawing.Point(0, 0);
             this.pnlSearchResults.Name = "pnlSearchResults";
