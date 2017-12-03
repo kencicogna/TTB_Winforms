@@ -27,7 +27,7 @@ namespace ProductManager.Presenters
             EventAggregator.Instance.Subscribe<InventoryShowSearchResultView>(OnBtnShowSearchResultsView_Click);
             EventAggregator.Instance.Subscribe<InventoryShowProductEditorView>(OnBtnShowProductView_Click);
             EventAggregator.Instance.Subscribe<InventoryProductSearch>(OnSearchTextChanged);            
-            //EventAggregator.Instance.Subscribe<InventorySearchResult>(OnDisplaySearchResults);
+            EventAggregator.Instance.Subscribe<InventoryProductDetails>(OnDisplayProductDetails);
 
         }
 
@@ -68,7 +68,7 @@ namespace ProductManager.Presenters
                         var inventoryItem = new InventoryItem();
                         inventoryItem.SKU = reader[0].ToString();
                         inventoryItem.Title = reader[1].ToString();
-                        inventoryItem.Variations = reader[2].ToString();
+                        inventoryItem.Variation = reader[2].ToString();
                         inventoryItem.BinRack = reader[3].ToString();
                         inventoryItem.Cost = reader[4].ToString();
 
@@ -114,6 +114,12 @@ namespace ProductManager.Presenters
         private void OnBtnShowProductView_Click(InventoryShowProductEditorView obj)
         {
             inventoryView.ShowProductEditorView();
+        }
+
+        private void OnDisplayProductDetails(InventoryProductDetails obj)
+        {
+            inventoryView.ShowProductEditorView();
+
         }
 
         public void OnSearchTextChanged(InventoryShowSearchResultView inventorySearch)

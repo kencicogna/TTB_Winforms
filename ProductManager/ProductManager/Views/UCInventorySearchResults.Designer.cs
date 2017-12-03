@@ -70,6 +70,7 @@
             this.lbTitleSearchMatches.Name = "lbTitleSearchMatches";
             this.lbTitleSearchMatches.Size = new System.Drawing.Size(799, 95);
             this.lbTitleSearchMatches.TabIndex = 1;
+            this.lbTitleSearchMatches.SelectedValueChanged += new System.EventHandler(this.lbTitleSearchMatches_SelectedValueChanged);
             this.lbTitleSearchMatches.MouseHover += new System.EventHandler(this.lbTitleSearchMatches_MouseHover);
             // 
             // pnlSearchResults

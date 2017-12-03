@@ -48,6 +48,7 @@
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IApplicationEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
+    <Compile Include="Events\InventoryProductDetails.cs" />
     <Compile Include="Events\InventoryProductSearch.cs" />
     <Compile Include="Events\InventorySearchResult.cs" />
     <Compile Include="Events\InventoryShowProductEditorView.cs" />
