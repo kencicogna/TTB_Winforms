@@ -63,5 +63,69 @@ namespace ProductManager.Views
             }
 
         }
+
+        private void pbMenuInventory_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedIndex = 0;
+            lblMainHeaderStatus.Text = "Enter SKU, UPC, or any part of Title to search for products.";
+        }
+
+        private void pbMenuShipping_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedIndex = 1;
+            lblMainHeaderStatus.Text = "Welcome to the shipping application.";
+        }
+
+        private void pbMenuPickList_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedIndex = 2;
+            lblMainHeaderStatus.Text = "Pick the items belows in the order specified.";
+        }
+
+        private void pbMenuSettings_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedIndex = 3;
+            lblMainHeaderStatus.Text = "Adjust the application settings here.";
+        }
+
+        private void pbMenuInventory_MouseEnter(object sender, EventArgs e)
+        {
+            pbMenuInventory.BackColor = Color.SkyBlue;
+        }
+
+        private void pbMenuInventory_MouseLeave(object sender, EventArgs e)
+        {
+            pbMenuInventory.BackColor = Color.Transparent;
+        }
+
+        private void pbMenuShipping_MouseEnter(object sender, EventArgs e)
+        {
+            pbMenuShipping.BackColor = Color.SkyBlue;
+        }
+
+        private void pbMenuShipping_MouseLeave(object sender, EventArgs e)
+        {
+            pbMenuShipping.BackColor = Color.Transparent;
+        }
+
+        private void pbMenuPickList_MouseEnter(object sender, EventArgs e)
+        {
+            pbMenuPickList.BackColor = Color.SkyBlue;
+        }
+
+        private void pbMenuPickList_MouseLeave(object sender, EventArgs e)
+        {
+            pbMenuPickList.BackColor = Color.Transparent;
+        }
+
+        private void pbMenuSettings_MouseEnter(object sender, EventArgs e)
+        {
+            pbMenuSettings.BackColor = Color.SkyBlue;
+        }
+
+        private void pbMenuSettings_MouseLeave(object sender, EventArgs e)
+        {
+            pbMenuSettings.BackColor = Color.Transparent;
+        }
     }
 }

@@ -54,7 +54,7 @@ namespace ProductManager.Presenters
                 conn.Open();
 
                 // Create the command
-                SqlCommand command = new SqlCommand("SELECT top 3 sku, title, variation, cost, Location as binrack, image_url FROM Inventory WHERE title like @titleSearch or sku like @skuSearch", conn);
+                SqlCommand command = new SqlCommand("SELECT top 18 sku, title, variation, cost, Location as binrack, image_url FROM Inventory WHERE title like @titleSearch or sku like @skuSearch", conn);
 
                 // Add the parameters.
                 command.Parameters.Add(new SqlParameter("titleSearch", "%" + ps.SearchString + "%"));

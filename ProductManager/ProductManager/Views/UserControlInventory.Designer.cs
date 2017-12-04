@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.toolTipsInventory = new System.Windows.Forms.ToolTip(this.components);
             this.pnlSeachBarContainer = new System.Windows.Forms.Panel();
-            this.ucInventorySearchBar = new ProductManager.Views.UCInventorySearchBar();
             this.pnlSearchResultsContainer = new System.Windows.Forms.Panel();
-            this.ucInventorySearchResults = new ProductManager.Views.UCInventorySearchResults();
             this.pnlProductEditorContainer = new System.Windows.Forms.Panel();
+            this.ucInventorySearchBar = new ProductManager.Views.UCInventorySearchBar();
+            this.ucInventorySearchResults = new ProductManager.Views.UCInventorySearchResults();
             this.ucInventoryProductEditor = new ProductManager.Views.UCInventoryProductEditor();
             this.pnlSeachBarContainer.SuspendLayout();
             this.pnlSearchResultsContainer.SuspendLayout();
@@ -53,16 +53,8 @@
             this.pnlSeachBarContainer.Controls.Add(this.ucInventorySearchBar);
             this.pnlSeachBarContainer.Location = new System.Drawing.Point(3, 3);
             this.pnlSeachBarContainer.Name = "pnlSeachBarContainer";
-            this.pnlSeachBarContainer.Size = new System.Drawing.Size(893, 87);
+            this.pnlSeachBarContainer.Size = new System.Drawing.Size(893, 62);
             this.pnlSeachBarContainer.TabIndex = 0;
-            // 
-            // ucInventorySearchBar
-            // 
-            this.ucInventorySearchBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucInventorySearchBar.Location = new System.Drawing.Point(0, 0);
-            this.ucInventorySearchBar.Name = "ucInventorySearchBar";
-            this.ucInventorySearchBar.Size = new System.Drawing.Size(893, 87);
-            this.ucInventorySearchBar.TabIndex = 0;
             // 
             // pnlSearchResultsContainer
             // 
@@ -70,10 +62,30 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSearchResultsContainer.Controls.Add(this.ucInventorySearchResults);
-            this.pnlSearchResultsContainer.Location = new System.Drawing.Point(3, 99);
+            this.pnlSearchResultsContainer.Location = new System.Drawing.Point(3, 71);
             this.pnlSearchResultsContainer.Name = "pnlSearchResultsContainer";
-            this.pnlSearchResultsContainer.Size = new System.Drawing.Size(896, 473);
+            this.pnlSearchResultsContainer.Size = new System.Drawing.Size(896, 501);
             this.pnlSearchResultsContainer.TabIndex = 1;
+            // 
+            // pnlProductEditorContainer
+            // 
+            this.pnlProductEditorContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlProductEditorContainer.Controls.Add(this.ucInventoryProductEditor);
+            this.pnlProductEditorContainer.Location = new System.Drawing.Point(3, 71);
+            this.pnlProductEditorContainer.Name = "pnlProductEditorContainer";
+            this.pnlProductEditorContainer.Size = new System.Drawing.Size(893, 501);
+            this.pnlProductEditorContainer.TabIndex = 2;
+            // 
+            // ucInventorySearchBar
+            // 
+            this.ucInventorySearchBar.BackColor = System.Drawing.Color.Transparent;
+            this.ucInventorySearchBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucInventorySearchBar.Location = new System.Drawing.Point(0, 0);
+            this.ucInventorySearchBar.Name = "ucInventorySearchBar";
+            this.ucInventorySearchBar.Size = new System.Drawing.Size(893, 62);
+            this.ucInventorySearchBar.TabIndex = 0;
             // 
             // ucInventorySearchResults
             // 
@@ -81,23 +93,15 @@
             this.ucInventorySearchResults.Location = new System.Drawing.Point(0, 0);
             this.ucInventorySearchResults.Margin = new System.Windows.Forms.Padding(0);
             this.ucInventorySearchResults.Name = "ucInventorySearchResults";
-            this.ucInventorySearchResults.Size = new System.Drawing.Size(896, 473);
+            this.ucInventorySearchResults.Size = new System.Drawing.Size(896, 501);
             this.ucInventorySearchResults.TabIndex = 1;
-            // 
-            // pnlProductEditorContainer
-            // 
-            this.pnlProductEditorContainer.Controls.Add(this.ucInventoryProductEditor);
-            this.pnlProductEditorContainer.Location = new System.Drawing.Point(3, 96);
-            this.pnlProductEditorContainer.Name = "pnlProductEditorContainer";
-            this.pnlProductEditorContainer.Size = new System.Drawing.Size(893, 476);
-            this.pnlProductEditorContainer.TabIndex = 2;
             // 
             // ucInventoryProductEditor
             // 
             this.ucInventoryProductEditor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucInventoryProductEditor.Location = new System.Drawing.Point(0, 0);
             this.ucInventoryProductEditor.Name = "ucInventoryProductEditor";
-            this.ucInventoryProductEditor.Size = new System.Drawing.Size(893, 476);
+            this.ucInventoryProductEditor.Size = new System.Drawing.Size(893, 501);
             this.ucInventoryProductEditor.TabIndex = 0;
             // 
             // UCInventoryView
