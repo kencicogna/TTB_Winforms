@@ -44,9 +44,11 @@ namespace ProductManager.Views
                 var pb = new PictureBox();
                 pb.Name = sku;
                 pb.Image = inventorySearchResults.InventoryItems[i].PrimaryPicture;
-                pb.Size = new System.Drawing.Size(185, 185);
+                pb.Size = new System.Drawing.Size(175, 175);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.Click += new EventHandler(OnImageClick);
+
+                pb.Tag = inventorySearchResults.InventoryItems[i];
 
                 tlpImageSearchMatches.Controls.Add(pb, col, row);
             }
@@ -55,7 +57,7 @@ namespace ProductManager.Views
         private void OnImageClick(object sender, EventArgs e)
         {
             var pb = (PictureBox)sender;
-            EventAggregator.Instance.Publish(new InventoryProductDetails { SKU = pb.Name });
+            EventAggregator.Instance.Publish(new InventoryProductDetails { inventoryItem = (InventoryItem)pb.Tag });
         }
 
     }

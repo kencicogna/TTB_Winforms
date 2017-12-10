@@ -45,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BTDataDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BTDataDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IApplicationEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
@@ -56,31 +61,32 @@
     <Compile Include="Models\InventoryItem.cs" />
     <Compile Include="Models\InventorySearchResults.cs" />
     <Compile Include="Models\InventoryView.cs" />
-    <Compile Include="Presenters\InventoryPresenter.cs" />
+    <Compile Include="Presenters\Inventory\InventoryPresenter.cs" />
     <Compile Include="Presenters\MainFormPresenter.cs" />
     <Compile Include="Repository\InventoryDAL.cs" />
-    <Compile Include="Views\UCInventoryProductEditor.cs">
+    <Compile Include="Events\InventoryProductDetailsLineItems.cs" />
+    <Compile Include="Views\Inventory\UCInventoryProductEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UCInventoryProductEditor.Designer.cs">
+    <Compile Include="Views\Inventory\UCInventoryProductEditor.Designer.cs">
       <DependentUpon>UCInventoryProductEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UCInventorySearchBar.cs">
+    <Compile Include="Views\Inventory\UCInventorySearchBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UCInventorySearchBar.Designer.cs">
+    <Compile Include="Views\Inventory\UCInventorySearchBar.Designer.cs">
       <DependentUpon>UCInventorySearchBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UCInventorySearchResults.cs">
+    <Compile Include="Views\Inventory\UCInventorySearchResults.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UCInventorySearchResults.Designer.cs">
+    <Compile Include="Views\Inventory\UCInventorySearchResults.Designer.cs">
       <DependentUpon>UCInventorySearchResults.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UCInventoryView.cs">
+    <Compile Include="Views\Inventory\UCInventoryView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControlInventory.Designer.cs">
+    <Compile Include="Views\Inventory\UserControlInventory.Designer.cs">
       <DependentUpon>UCInventoryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainForm.cs">
@@ -121,16 +127,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\UCInventoryProductEditor.resx">
+    <EmbeddedResource Include="Views\Inventory\UCInventoryProductEditor.resx">
       <DependentUpon>UCInventoryProductEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UCInventorySearchBar.resx">
+    <EmbeddedResource Include="Views\Inventory\UCInventorySearchBar.resx">
       <DependentUpon>UCInventorySearchBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UCInventorySearchResults.resx">
+    <EmbeddedResource Include="Views\Inventory\UCInventorySearchResults.resx">
       <DependentUpon>UCInventorySearchResults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UCInventoryView.resx">
+    <EmbeddedResource Include="Views\Inventory\UCInventoryView.resx">
       <DependentUpon>UCInventoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControlPickList.resx">
@@ -142,6 +148,17 @@
     <EmbeddedResource Include="Views\UserControlShipping.resx">
       <DependentUpon>UserControlShipping.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="BTDataDataSet.xsc">
+      <DependentUpon>BTDataDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BTDataDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BTDataDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BTDataDataSet.xss">
+      <DependentUpon>BTDataDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -157,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="Views\PickList\" />
+    <Folder Include="Views\Settings\" />
+    <Folder Include="Views\Shipping\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\dear.png" />

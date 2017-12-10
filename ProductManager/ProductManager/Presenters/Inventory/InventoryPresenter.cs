@@ -11,6 +11,7 @@ using System.Net;
 using System.Threading;
 using System.Drawing;
 using System.IO;
+using ProductManager.Repository;
 
 namespace ProductManager.Presenters
 {
@@ -18,11 +19,13 @@ namespace ProductManager.Presenters
     {
         private readonly IInventoryView inventoryView;
         private readonly InventorySearchResults inventorySearchResults;
+        private readonly InventoryDAL inventoryDAL;
 
         public InventoryPresenter(IInventoryView iv)
         {
             inventoryView = iv;
             inventorySearchResults = new InventorySearchResults();
+            inventoryDAL = new InventoryDAL();
 
             EventAggregator.Instance.Subscribe<InventoryShowSearchResultView>(OnBtnShowSearchResultsView_Click);
             EventAggregator.Instance.Subscribe<InventoryShowProductEditorView>(OnBtnShowProductView_Click);
@@ -54,11 +57,16 @@ namespace ProductManager.Presenters
                 conn.Open();
 
                 // Create the command
-                SqlCommand command = new SqlCommand("SELECT top 18 sku, title, variation, cost, Location as binrack, image_url FROM Inventory WHERE title like @titleSearch or sku like @skuSearch", conn);
+                SqlCommand command = new SqlCommand(
+                    "SELECT top 18 * " + //sku, title, variation, cost, Location as binrack, image_url " +
+                      "FROM Inventory " +
+                      "WHERE title like @titleSearch or sku like @skuSearch or upc like @upcSearch", 
+                    conn);
 
                 // Add the parameters.
                 command.Parameters.Add(new SqlParameter("titleSearch", "%" + ps.SearchString + "%"));
                 command.Parameters.Add(new SqlParameter("skuSearch", "%" + ps.SearchString + "%"));
+                command.Parameters.Add(new SqlParameter("upcSearch", "%" + ps.SearchString + "%"));
 
                 // Execute command and read results
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -66,18 +74,21 @@ namespace ProductManager.Presenters
                     while (reader.Read())
                     {
                         var inventoryItem = new InventoryItem();
-                        inventoryItem.SKU = reader[0].ToString();
-                        inventoryItem.Title = reader[1].ToString();
-                        inventoryItem.Variation = reader[2].ToString();
-                        inventoryItem.BinRack = reader[3].ToString();
-                        inventoryItem.Cost = reader[4].ToString();
+                        inventoryItem.SKU = reader["SKU"].ToString();
+                        inventoryItem.Title = reader["Title"].ToString();
+                        inventoryItem.Variation = reader["Variation"].ToString();
+                        inventoryItem.BinRack = reader["Location"].ToString();
+                        inventoryItem.Cost = reader["cost"].ToString();
+                        inventoryItem.Supplier = reader["supplier"].ToString();
+                        inventoryItem.Weight = (int)reader["weight"];
+                        inventoryItem.UPC = reader["UPC"].ToString();
 
-                        var url = reader[5].ToString();
+                        var url = reader["image_url"].ToString();
 
                         using (var wc = new WebClient())
                         {
                             // Don't keep reloading the picture
-                            Thread.Sleep(2000);
+                            //Thread.Sleep(2000);
 
                             try
                             {
@@ -91,7 +102,7 @@ namespace ProductManager.Presenters
                             using (Image tempimg = Image.FromFile(tempfile))
                             {
                                 inventoryItem.PrimaryPicture = new Bitmap(tempimg);
-                                inventoryItem.Title = reader[1].ToString();
+                                //inventoryItem.Title = reader[1].ToString();
                             }
 
                             inventorySearchResults.InventoryItems.Add(inventoryItem);
@@ -120,6 +131,18 @@ namespace ProductManager.Presenters
         {
             inventoryView.ShowProductEditorView();
 
+            // query db, get all variations for this item
+            var allItems = inventoryDAL.GetAllVariations(obj.inventoryItem);
+
+            // populate the product editor view; publish InventoryProductDetailsLineItems
+            if (allItems != null)
+            {
+                EventAggregator.Instance.Publish(new InventoryProductDetailsLineItems { inventoryItems = allItems.VariationItems });
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Test");
+            }
         }
 
         public void OnSearchTextChanged(InventoryShowSearchResultView inventorySearch)

@@ -79,6 +79,7 @@
             this.Controls.Add(this.tbSearch);
             this.Name = "UCInventorySearchBar";
             this.Size = new System.Drawing.Size(861, 62);
+            this.Load += new System.EventHandler(this.UCInventorySearchBar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,28 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlProductEditor = new System.Windows.Forms.Panel();
+            this.dgvProductDetails = new System.Windows.Forms.DataGridView();
             this.pnlProductEditor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "This is the product editor";
             // 
             // pnlProductEditor
             // 
-            this.pnlProductEditor.Controls.Add(this.label1);
+            this.pnlProductEditor.Controls.Add(this.dgvProductDetails);
             this.pnlProductEditor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlProductEditor.Location = new System.Drawing.Point(0, 0);
             this.pnlProductEditor.Name = "pnlProductEditor";
             this.pnlProductEditor.Size = new System.Drawing.Size(713, 510);
             this.pnlProductEditor.TabIndex = 1;
+            // 
+            // dgvProductDetails
+            // 
+            this.dgvProductDetails.AllowUserToAddRows = false;
+            this.dgvProductDetails.AllowUserToDeleteRows = false;
+            this.dgvProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvProductDetails.Location = new System.Drawing.Point(0, 0);
+            this.dgvProductDetails.Name = "dgvProductDetails";
+            this.dgvProductDetails.Size = new System.Drawing.Size(713, 510);
+            this.dgvProductDetails.TabIndex = 0;
+            this.dgvProductDetails.MouseEnter += new System.EventHandler(this.dgvProductDetails_MouseEnter);
             // 
             // UCInventoryProductEditor
             // 
@@ -59,14 +63,13 @@
             this.Name = "UCInventoryProductEditor";
             this.Size = new System.Drawing.Size(713, 510);
             this.pnlProductEditor.ResumeLayout(false);
-            this.pnlProductEditor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlProductEditor;
+        private System.Windows.Forms.DataGridView dgvProductDetails;
     }
 }

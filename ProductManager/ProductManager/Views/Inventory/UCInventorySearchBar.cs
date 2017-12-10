@@ -77,6 +77,13 @@ namespace ProductManager.Views
             EventAggregator.Instance.Publish(new InventoryShowProductEditorView());
         }
 
+        private void UCInventorySearchBar_Load(object sender, EventArgs e)
+        {
+        }
 
+        public void SetSearchBoxFocus()
+        {
+            this.tbSearch.Focus();
+        }
     }
 }

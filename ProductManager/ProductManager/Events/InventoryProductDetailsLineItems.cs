@@ -7,8 +7,8 @@ using ProductManager.Models;
 
 namespace ProductManager.Events
 {
-    public class InventoryProductDetails : IApplicationEvent
+    public class InventoryProductDetailsLineItems : IApplicationEvent
     {
-        public InventoryItem inventoryItem { get; set; }
+        public List<InventoryItem> inventoryItems { get; set; }
     }
 }

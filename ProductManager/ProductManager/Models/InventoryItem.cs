@@ -9,6 +9,11 @@ namespace ProductManager.Models
 {
     public class InventoryItem
     {
+        public InventoryItem()
+        {
+            VariationItems = new List<InventoryItem>();
+        }
+
         public int Id { get; set; }
         public String SKU { get; set; }
         public String Variation { get; set; }

@@ -36,6 +36,7 @@ namespace ProductManager.Views
 
             inventorySearchResults = isr;
             inventoryProductEditor = ipe;
+            inventoryProductEditor.Dock = DockStyle.Fill;
 
             ShowSearchResultsView();
         }
@@ -57,5 +58,9 @@ namespace ProductManager.Views
             ucInventorySearchResults.DisplaySearchResults(inventorySearchResults);
         }
 
+        private void UCInventoryView_Load(object sender, EventArgs e)
+        {
+            inventorySearchResults.SetSearchBoxFocus();
+        }
     }
 }
