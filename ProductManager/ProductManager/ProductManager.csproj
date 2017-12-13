@@ -62,6 +62,9 @@
     <Compile Include="Models\InventorySearchResults.cs" />
     <Compile Include="Models\InventoryView.cs" />
     <Compile Include="Presenters\Inventory\InventoryPresenter.cs" />
+    <Compile Include="Presenters\Inventory\InventoryProductEditorPresenter.cs" />
+    <Compile Include="Presenters\Inventory\InventorySearchBarPresenter.cs" />
+    <Compile Include="Presenters\Inventory\InventorySearchResultsPresenter.cs" />
     <Compile Include="Presenters\MainFormPresenter.cs" />
     <Compile Include="Repository\InventoryDAL.cs" />
     <Compile Include="Events\InventoryProductDetailsLineItems.cs" />

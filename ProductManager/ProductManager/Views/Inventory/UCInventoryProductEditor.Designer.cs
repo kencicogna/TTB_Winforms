@@ -1,4 +1,4 @@
-﻿namespace ProductManager.Views
+﻿namespace ProductManager.Views.Inventory
 {
     partial class UCInventoryProductEditor
     {
@@ -53,7 +53,8 @@
             this.dgvProductDetails.Name = "dgvProductDetails";
             this.dgvProductDetails.Size = new System.Drawing.Size(713, 510);
             this.dgvProductDetails.TabIndex = 0;
-            this.dgvProductDetails.MouseEnter += new System.EventHandler(this.dgvProductDetails_MouseEnter);
+            this.dgvProductDetails.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellMouseEnter);
+            this.dgvProductDetails.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellMouseLeave);
             // 
             // UCInventoryProductEditor
             // 

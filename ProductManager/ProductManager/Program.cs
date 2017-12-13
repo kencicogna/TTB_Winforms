@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductManager.Views;
+using ProductManager.Views.Inventory;
 using ProductManager.Presenters;
+using ProductManager.Presenters.Inventory;
 
 namespace ProductManager
 {
@@ -23,12 +25,17 @@ namespace ProductManager
             // Create Dependancies
             //
 
-            // User Controls / Views / Helper Objects
-            var ucInventorySearchResults = new UCInventorySearchResults();
-            var ucInventoryProductEditor = new UCInventoryProductEditor();
-            var inventoryView = new UCInventoryView(ucInventorySearchResults, ucInventoryProductEditor);
+            // User Controls / Presenters
+            var ucInventorySearchBar = new UCInventorySearchBar();
+            ucInventorySearchBar.Tag = new InventorySearchBarPresenter(ucInventorySearchBar);
 
-            // Presenters
+            var ucInventorySearchResults = new UCInventorySearchResults();
+            ucInventorySearchResults.Tag = new InventorySearchResultsPresenter(ucInventorySearchResults);
+
+            var ucInventoryProductEditor = new UCInventoryProductEditor();
+            ucInventoryProductEditor.Tag = new InventoryProductEditorPresenter(ucInventoryProductEditor);
+
+            var inventoryView = new UCInventoryView(ucInventorySearchBar, ucInventorySearchResults, ucInventoryProductEditor);
             inventoryView.Tag = new InventoryPresenter(inventoryView);
 
             // Main Form

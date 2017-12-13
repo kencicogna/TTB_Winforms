@@ -1,4 +1,4 @@
-﻿namespace ProductManager.Views
+﻿namespace ProductManager.Views.Inventory
 {
     partial class UCInventorySearchResults
     {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductManager.Models;
 
-namespace ProductManager.Views
+namespace ProductManager.Views.Inventory
 {
     public interface IInventoryView
     {
@@ -22,45 +22,53 @@ namespace ProductManager.Views
         //String Variations { get; set; }
         void ShowSearchResultsView();
         void ShowProductEditorView();
-        void DisplaySearchResults(InventorySearchResults i);
+        void DisplayResultsInProductEditor(InventorySearchResults inventorySearchResults);
+        //void DisplaySearchResults(InventorySearchResults i);
     }
 
     public partial class UCInventoryView : UserControl, IInventoryView
     {
+        private readonly Control inventorySearchBar;
         private readonly Control inventorySearchResults;
         private readonly Control inventoryProductEditor;
 
-        public UCInventoryView(Control isr, Control ipe)
+        public UCInventoryView(Control isb, Control isr, Control ipe)
         {
             InitializeComponent();
 
+            inventorySearchBar = isb;
+            inventorySearchBar.Dock = DockStyle.Fill;
+            pnlSeachBarContainer.Controls.Clear();
+            pnlSeachBarContainer.Controls.Add(inventorySearchBar);
+
             inventorySearchResults = isr;
+            inventorySearchResults.Dock = DockStyle.Fill;
+            ShowSearchResultsView();
+
             inventoryProductEditor = ipe;
             inventoryProductEditor.Dock = DockStyle.Fill;
-
-            ShowSearchResultsView();
         }
 
         public void ShowSearchResultsView()
         {
-            pnlSearchResultsContainer.Show();
-            pnlProductEditorContainer.Hide();
+            pnlSearchResultsContainer.Controls.Clear();
+            pnlSearchResultsContainer.Controls.Add(inventorySearchResults);
         }
 
         public void ShowProductEditorView()
         {
-            pnlProductEditorContainer.Show();
-            pnlSearchResultsContainer.Hide();
-        }
-
-        public void DisplaySearchResults(InventorySearchResults inventorySearchResults)
-        {
-            ucInventorySearchResults.DisplaySearchResults(inventorySearchResults);
+            pnlSearchResultsContainer.Controls.Clear();
+            pnlSearchResultsContainer.Controls.Add(inventoryProductEditor);
         }
 
         private void UCInventoryView_Load(object sender, EventArgs e)
         {
-            inventorySearchResults.SetSearchBoxFocus();
+         //   this.inventorySearchBar.SetSearchBoxFocus();
+        }
+
+        public void DisplayResultsInProductEditor(InventorySearchResults inventorySearchResults)
+        {
+            throw new NotImplementedException();
         }
     }
 }

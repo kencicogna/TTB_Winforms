@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductManager.Events;
 
-namespace ProductManager.Views
+namespace ProductManager.Views.Inventory
 {
     public interface IInventorySearchBar
     {
@@ -84,6 +84,11 @@ namespace ProductManager.Views
         public void SetSearchBoxFocus()
         {
             this.tbSearch.Focus();
+        }
+
+        private void tbSearch_Enter(object sender, EventArgs e)
+        {
+            EventAggregator.Instance.Publish(new InventoryShowSearchResultView());
         }
     }
 }

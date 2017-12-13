@@ -1,4 +1,4 @@
-﻿namespace ProductManager.Views
+﻿namespace ProductManager.Views.Inventory
 {
     partial class UCInventorySearchBar
     {
@@ -48,6 +48,7 @@
             this.tbSearch.TabIndex = 1;
             this.toolTip1.SetToolTip(this.tbSearch, "Searches SKU, UPC, and Title");
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
             this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // btnShowSearchResultsView

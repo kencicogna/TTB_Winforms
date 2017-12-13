@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using ProductManager.Models;
 using ProductManager.Events;
 
-namespace ProductManager.Views
+namespace ProductManager.Views.Inventory
 {
     public interface IInventorySearchResults
     {
@@ -33,16 +33,11 @@ namespace ProductManager.Views
 
             for (var i=0; i < itemCount; i++)
             {
-                var sku = inventorySearchResults.InventoryItems[i].SKU;
-                var title = inventorySearchResults.InventoryItems[i].Title;
-
-                //cbTitleSearchMatches.Items.Add(title);
-
                 var row = (int)Math.Floor(itemCount / 6);
                 var col = (int)itemCount % 6;
 
                 var pb = new PictureBox();
-                pb.Name = sku;
+                pb.Name = inventorySearchResults.InventoryItems[i].SKU;
                 pb.Image = inventorySearchResults.InventoryItems[i].PrimaryPicture;
                 pb.Size = new System.Drawing.Size(175, 175);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
