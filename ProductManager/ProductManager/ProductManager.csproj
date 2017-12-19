@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BTDataDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Common\Utils.cs" />
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IApplicationEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
@@ -176,7 +177,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Views\PickList\" />
     <Folder Include="Views\Settings\" />
     <Folder Include="Views\Shipping\" />

@@ -79,6 +79,7 @@ namespace ProductManager.Views.Inventory
 
         private void UCInventorySearchBar_Load(object sender, EventArgs e)
         {
+            //tbSearch.Focus();
         }
 
         public void SetSearchBoxFocus()
@@ -88,7 +89,7 @@ namespace ProductManager.Views.Inventory
 
         private void tbSearch_Enter(object sender, EventArgs e)
         {
-            EventAggregator.Instance.Publish(new InventoryShowSearchResultView());
+            //EventAggregator.Instance.Publish(new InventoryShowSearchResultView());
         }
     }
 }

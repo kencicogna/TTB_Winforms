@@ -26,27 +26,44 @@ namespace ProductManager.Views.Inventory
 
         internal void DisplaySearchResults(InventorySearchResults inventorySearchResults)
         {
-            //cbTitleSearchMatches.Items.Clear();
-            tlpImageSearchMatches.Controls.Clear();
+            EventAggregator.Instance.Publish(new InventoryShowSearchResultView());
+
+            // Reset size of grid
+            //tlpImageSearchMatches.Controls.Clear();
+            flpSearchMatches.Controls.Clear();
 
             decimal itemCount = inventorySearchResults.InventoryItems.Count();
+            //tlpImageSearchMatches.Height = 300;
+            //tlpImageSearchMatches.Width = 300;
 
             for (var i=0; i < itemCount; i++)
             {
-                var row = (int)Math.Floor(itemCount / 6);
+                var row = (int)Math.Floor( (decimal)i / 6);
                 var col = (int)itemCount % 6;
 
                 var pb = new PictureBox();
                 pb.Name = inventorySearchResults.InventoryItems[i].SKU;
-                pb.Image = inventorySearchResults.InventoryItems[i].PrimaryPicture;
-                pb.Size = new System.Drawing.Size(175, 175);
+                pb.Size = new Size(175, 175);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                Image thumb = inventorySearchResults.InventoryItems[i].PrimaryPicture.GetThumbnailImage(175, 175, null, IntPtr.Zero);
+                pb.Image = thumb;
+
                 pb.Click += new EventHandler(OnImageClick);
 
                 pb.Tag = inventorySearchResults.InventoryItems[i];
 
-                tlpImageSearchMatches.Controls.Add(pb, col, row);
+                // Add Image to specific cell in table
+                //tlpImageSearchMatches.Controls.Add(pb, col, row);
+                flpSearchMatches.Controls.Add(pb);
             }
+
+            // Resize grid
+            //for (var i=1; i < 3; i++)
+            //{
+            //    tlpImageSearchMatches.RowStyles[i].Height = 175;
+            //    tlpImageSearchMatches.ColumnStyles[i].Width = 175;
+            //}
         }
 
         private void OnImageClick(object sender, EventArgs e)

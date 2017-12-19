@@ -51,19 +51,33 @@ namespace ProductManager.Views.Inventory
 
         public void ShowSearchResultsView()
         {
-            pnlSearchResultsContainer.Controls.Clear();
-            pnlSearchResultsContainer.Controls.Add(inventorySearchResults);
+            if (pnlSearchResultsContainer.Controls.Count == 0)
+            {
+                pnlSearchResultsContainer.Controls.Add(inventorySearchResults);
+            }
+            else if (pnlSearchResultsContainer.Controls[0].GetType().Name != "UCInventorySearchResults")
+            {
+                pnlSearchResultsContainer.Controls.Clear();
+                pnlSearchResultsContainer.Controls.Add(inventorySearchResults);
+            }
         }
 
         public void ShowProductEditorView()
         {
-            pnlSearchResultsContainer.Controls.Clear();
-            pnlSearchResultsContainer.Controls.Add(inventoryProductEditor);
+            if (pnlSearchResultsContainer.Controls.Count == 0)
+            {
+                pnlSearchResultsContainer.Controls.Add(inventoryProductEditor);
+            }
+            else if (pnlSearchResultsContainer.Controls[0].GetType().Name != "UCInventoryProductEditor")
+            {
+                pnlSearchResultsContainer.Controls.Clear();
+                pnlSearchResultsContainer.Controls.Add(inventoryProductEditor);
+            }
         }
 
         private void UCInventoryView_Load(object sender, EventArgs e)
         {
-         //   this.inventorySearchBar.SetSearchBoxFocus();
+            //(UCInventorySearchBar)inventorySearchBar.SetSearchBoxFocus();
         }
 
         public void DisplayResultsInProductEditor(InventorySearchResults inventorySearchResults)

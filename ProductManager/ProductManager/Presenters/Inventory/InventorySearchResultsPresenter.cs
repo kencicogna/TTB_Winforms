@@ -23,11 +23,14 @@ namespace ProductManager.Presenters.Inventory
             ucInventorySearchResults = isr;
             inventorySearchResults = new InventorySearchResults();
 
+            // Query DB using search string, populate inventorySearchResults.InventoryItems
             EventAggregator.Instance.Subscribe<InventoryProductSearch>(OnSearchTextChanged);            
         }
 
         private void OnSearchTextChanged(InventoryProductSearch ps)
         {
+            ucInventorySearchResults.Focus();
+
             if (ps.SearchString.Length == 0)
                 return;
 
@@ -73,8 +76,6 @@ namespace ProductManager.Presenters.Inventory
                         using (var wc = new WebClient())
                         {
                             // Don't keep reloading the picture
-                            //Thread.Sleep(2000);
-
                             try
                             {
                                 wc.DownloadFile(url, tempfile);
@@ -87,7 +88,6 @@ namespace ProductManager.Presenters.Inventory
                             using (Image tempimg = Image.FromFile(tempfile))
                             {
                                 inventoryItem.PrimaryPicture = new Bitmap(tempimg);
-                                //inventoryItem.Title = reader[1].ToString();
                             }
 
                             inventorySearchResults.InventoryItems.Add(inventoryItem);

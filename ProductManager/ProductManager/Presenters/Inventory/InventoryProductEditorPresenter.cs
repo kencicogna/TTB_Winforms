@@ -39,7 +39,7 @@ namespace ProductManager.Presenters.Inventory
             // query db, get all variations for this item
             InventoryItem allItems = inventoryDAL.GetAllVariations(selectedItem.inventoryItem);
 
-            // populate the product editor view; publish InventoryProductDetailsLineItems
+            // populate the product editor view
             if (allItems != null)
             {
                 // TODO: I'm guessing this is not the right place for this
@@ -73,7 +73,7 @@ namespace ProductManager.Presenters.Inventory
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Test");
+                MessageBox.Show("Test");
             }
 
             dgvProductDetails.Focus();

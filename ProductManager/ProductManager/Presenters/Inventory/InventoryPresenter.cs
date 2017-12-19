@@ -17,25 +17,26 @@ namespace ProductManager.Presenters.Inventory
         {
             inventoryView = iv;
 
-            // keep
-            EventAggregator.Instance.Subscribe<InventoryShowSearchResultView>(OnBtnShowSearchResultsView_Click);
+            // Adds Product Editor control to Inventory view
             EventAggregator.Instance.Subscribe<InventoryShowProductEditorView>(OnBtnShowProductView_Click);
-
             EventAggregator.Instance.Subscribe<InventoryProductDetails>(OnDisplayProductDetails);
 
+            // Adds Search Results control to Inventory view
+            EventAggregator.Instance.Subscribe<InventoryShowSearchResultView>(OnBtnShowSearchResultsView_Click);
+            EventAggregator.Instance.Subscribe<InventoryProductSearch>(OnBtnShowSearchResultsView_Click);            
         }
 
-        //private void DisplaySearchResults(InventorySearchResult obj)
+        //private void DisplaySearchResults(InventorySearchResults inventorySearchResults)
         //{
-        //    inventoryView.DisplaySearchResults
+        //    inventoryView.DisplayResultsInProductEditor(inventorySearchResults);
         //}
 
-        private void DisplaySearchResults(InventorySearchResults inventorySearchResults)
+        private void OnBtnShowSearchResultsView_Click(InventoryShowSearchResultView obj)
         {
-            inventoryView.DisplayResultsInProductEditor(inventorySearchResults);
+            inventoryView.ShowSearchResultsView();
         }
 
-        private void OnBtnShowSearchResultsView_Click(InventoryShowSearchResultView obj)
+        private void OnBtnShowSearchResultsView_Click(InventoryProductSearch obj)
         {
             inventoryView.ShowSearchResultsView();
         }
@@ -45,7 +46,6 @@ namespace ProductManager.Presenters.Inventory
             inventoryView.ShowProductEditorView();
         }
 
-        // is this being called?
         private void OnDisplayProductDetails(InventoryProductDetails obj)
         {
             inventoryView.ShowProductEditorView();

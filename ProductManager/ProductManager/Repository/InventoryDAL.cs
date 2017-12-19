@@ -16,11 +16,17 @@ namespace ProductManager.Repository
         public InventoryItem inventoryItemList { get; set; }
         public InventoryDAL()
         {
+            // TODO: this is a little deceptive, an item will not always have variations, 
+            //       but the item is still stored in VariationItems list.
+            // List of Items (held in the VariationsItems property) 
             inventoryItemList = new InventoryItem();
         }
 
         public InventoryItem GetAllVariations(InventoryItem parentItem)
         {
+            // Clear out list of items
+            inventoryItemList.VariationItems.Clear();
+
             var tempfile = @"..\..\Images\temp.jpg";
             using (SqlConnection conn = new SqlConnection())
             {

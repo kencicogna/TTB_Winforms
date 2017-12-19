@@ -28,57 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tlpImageSearchMatches = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlSearchResults = new System.Windows.Forms.Panel();
-            this.pnlSearchResults.SuspendLayout();
+            this.flpSearchMatches = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // tlpImageSearchMatches
+            // flpSearchMatches
             // 
-            this.tlpImageSearchMatches.BackColor = System.Drawing.SystemColors.Control;
-            this.tlpImageSearchMatches.ColumnCount = 6;
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpImageSearchMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpImageSearchMatches.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpImageSearchMatches.Location = new System.Drawing.Point(0, 0);
-            this.tlpImageSearchMatches.Name = "tlpImageSearchMatches";
-            this.tlpImageSearchMatches.RowCount = 3;
-            this.tlpImageSearchMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageSearchMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageSearchMatches.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpImageSearchMatches.Size = new System.Drawing.Size(799, 530);
-            this.tlpImageSearchMatches.TabIndex = 2;
-            // 
-            // pnlSearchResults
-            // 
-            this.pnlSearchResults.Controls.Add(this.tlpImageSearchMatches);
-            this.pnlSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSearchResults.Location = new System.Drawing.Point(0, 0);
-            this.pnlSearchResults.Name = "pnlSearchResults";
-            this.pnlSearchResults.Size = new System.Drawing.Size(799, 530);
-            this.pnlSearchResults.TabIndex = 4;
+            this.flpSearchMatches.AutoScroll = true;
+            this.flpSearchMatches.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpSearchMatches.Location = new System.Drawing.Point(0, 0);
+            this.flpSearchMatches.Name = "flpSearchMatches";
+            this.flpSearchMatches.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.flpSearchMatches.Size = new System.Drawing.Size(799, 530);
+            this.flpSearchMatches.TabIndex = 3;
             // 
             // UCInventorySearchResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlSearchResults);
+            this.Controls.Add(this.flpSearchMatches);
             this.Name = "UCInventorySearchResults";
             this.Size = new System.Drawing.Size(799, 530);
-            this.pnlSearchResults.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tlpImageSearchMatches;
-        private System.Windows.Forms.Panel pnlSearchResults;
+        private System.Windows.Forms.FlowLayoutPanel flpSearchMatches;
     }
 }
