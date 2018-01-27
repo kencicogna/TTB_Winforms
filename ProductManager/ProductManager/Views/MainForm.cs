@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductManager.Presenters;
+using ProductManager.Events;
 
 namespace ProductManager.Views
 {
@@ -20,7 +21,7 @@ namespace ProductManager.Views
     {
         private readonly Control inventoryView;
 
-        internal void SetStatus(string statusText)
+        public void SetStatus(string statusText)
         {
             lblMainHeaderStatus.Text = statusText;
         }
@@ -68,6 +69,8 @@ namespace ProductManager.Views
         {
             tabControlMain.SelectedIndex = 0;
             lblMainHeaderStatus.Text = "Enter SKU, UPC, or any part of Title to search for products.";
+
+            EventAggregator.Instance.Publish(new InventoryPageSetup());
         }
 
         private void pbMenuShipping_Click(object sender, EventArgs e)
@@ -91,11 +94,13 @@ namespace ProductManager.Views
         private void pbMenuInventory_MouseEnter(object sender, EventArgs e)
         {
             pbMenuInventory.BackColor = Color.SkyBlue;
+            //pbMenuInventory.ImageLocation = @"..\..\Images\icons\inventory icon 10.png";
         }
 
         private void pbMenuInventory_MouseLeave(object sender, EventArgs e)
         {
             pbMenuInventory.BackColor = Color.Transparent;
+            //pbMenuInventory.ImageLocation = @"..\..\Images\icons\inventory icon.png";
         }
 
         private void pbMenuShipping_MouseEnter(object sender, EventArgs e)

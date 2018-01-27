@@ -28,13 +28,9 @@ namespace ProductManager.Views.Inventory
         {
             EventAggregator.Instance.Publish(new InventoryShowSearchResultView());
 
-            // Reset size of grid
-            //tlpImageSearchMatches.Controls.Clear();
             flpSearchMatches.Controls.Clear();
 
             decimal itemCount = inventorySearchResults.InventoryItems.Count();
-            //tlpImageSearchMatches.Height = 300;
-            //tlpImageSearchMatches.Width = 300;
 
             for (var i=0; i < itemCount; i++)
             {
@@ -53,17 +49,10 @@ namespace ProductManager.Views.Inventory
 
                 pb.Tag = inventorySearchResults.InventoryItems[i];
 
-                // Add Image to specific cell in table
-                //tlpImageSearchMatches.Controls.Add(pb, col, row);
+                // Add Image to FlowLayoutPanel
                 flpSearchMatches.Controls.Add(pb);
             }
 
-            // Resize grid
-            //for (var i=1; i < 3; i++)
-            //{
-            //    tlpImageSearchMatches.RowStyles[i].Height = 175;
-            //    tlpImageSearchMatches.ColumnStyles[i].Width = 175;
-            //}
         }
 
         private void OnImageClick(object sender, EventArgs e)

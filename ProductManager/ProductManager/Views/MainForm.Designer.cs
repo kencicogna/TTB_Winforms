@@ -41,8 +41,8 @@
             this.tlpMenuStrip = new System.Windows.Forms.TableLayoutPanel();
             this.pbMenuSettings = new System.Windows.Forms.PictureBox();
             this.pbMenuPickList = new System.Windows.Forms.PictureBox();
-            this.pbMenuShipping = new System.Windows.Forms.PictureBox();
             this.pbMenuInventory = new System.Windows.Forms.PictureBox();
+            this.pbMenuShipping = new System.Windows.Forms.PictureBox();
             this.pnlStatusTextContainer = new System.Windows.Forms.Panel();
             this.lblMainHeaderStatus = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -55,8 +55,8 @@
             this.tlpMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMenuSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMenuPickList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenuShipping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMenuInventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenuShipping)).BeginInit();
             this.pnlStatusTextContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +98,7 @@
             this.tabPageMainShipping.Location = new System.Drawing.Point(4, 4);
             this.tabPageMainShipping.Name = "tabPageMainShipping";
             this.tabPageMainShipping.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMainShipping.Size = new System.Drawing.Size(1126, 442);
+            this.tabPageMainShipping.Size = new System.Drawing.Size(1109, 442);
             this.tabPageMainShipping.TabIndex = 1;
             this.tabPageMainShipping.Text = "Shipping";
             this.tabPageMainShipping.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             this.tabPageMainPickList.ImageIndex = 1;
             this.tabPageMainPickList.Location = new System.Drawing.Point(4, 4);
             this.tabPageMainPickList.Name = "tabPageMainPickList";
-            this.tabPageMainPickList.Size = new System.Drawing.Size(1126, 442);
+            this.tabPageMainPickList.Size = new System.Drawing.Size(1109, 442);
             this.tabPageMainPickList.TabIndex = 2;
             this.tabPageMainPickList.Text = "PickList";
             this.tabPageMainPickList.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             this.tabPageMainAdmin.ImageIndex = 3;
             this.tabPageMainAdmin.Location = new System.Drawing.Point(4, 4);
             this.tabPageMainAdmin.Name = "tabPageMainAdmin";
-            this.tabPageMainAdmin.Size = new System.Drawing.Size(1126, 442);
+            this.tabPageMainAdmin.Size = new System.Drawing.Size(1109, 442);
             this.tabPageMainAdmin.TabIndex = 3;
             this.tabPageMainAdmin.Text = "Settings";
             this.tabPageMainAdmin.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
             // 
             this.tlpMainHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpMainHeader.BackColor = System.Drawing.Color.Transparent;
+            this.tlpMainHeader.BackColor = System.Drawing.Color.White;
             this.tlpMainHeader.ColumnCount = 3;
             this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -156,7 +156,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.Controls.Add(this.tlpMenuStrip);
@@ -217,21 +217,6 @@
             this.pbMenuPickList.MouseEnter += new System.EventHandler(this.pbMenuPickList_MouseEnter);
             this.pbMenuPickList.MouseLeave += new System.EventHandler(this.pbMenuPickList_MouseLeave);
             // 
-            // pbMenuShipping
-            // 
-            this.pbMenuShipping.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pbMenuShipping.Image = ((System.Drawing.Image)(resources.GetObject("pbMenuShipping.Image")));
-            this.pbMenuShipping.Location = new System.Drawing.Point(83, 3);
-            this.pbMenuShipping.Name = "pbMenuShipping";
-            this.pbMenuShipping.Size = new System.Drawing.Size(74, 94);
-            this.pbMenuShipping.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbMenuShipping.TabIndex = 1;
-            this.pbMenuShipping.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbMenuShipping, "Shipping");
-            this.pbMenuShipping.Click += new System.EventHandler(this.pbMenuShipping_Click);
-            this.pbMenuShipping.MouseEnter += new System.EventHandler(this.pbMenuShipping_MouseEnter);
-            this.pbMenuShipping.MouseLeave += new System.EventHandler(this.pbMenuShipping_MouseLeave);
-            // 
             // pbMenuInventory
             // 
             this.pbMenuInventory.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -246,6 +231,21 @@
             this.pbMenuInventory.Click += new System.EventHandler(this.pbMenuInventory_Click);
             this.pbMenuInventory.MouseEnter += new System.EventHandler(this.pbMenuInventory_MouseEnter);
             this.pbMenuInventory.MouseLeave += new System.EventHandler(this.pbMenuInventory_MouseLeave);
+            // 
+            // pbMenuShipping
+            // 
+            this.pbMenuShipping.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pbMenuShipping.Image = ((System.Drawing.Image)(resources.GetObject("pbMenuShipping.Image")));
+            this.pbMenuShipping.Location = new System.Drawing.Point(83, 3);
+            this.pbMenuShipping.Name = "pbMenuShipping";
+            this.pbMenuShipping.Size = new System.Drawing.Size(74, 94);
+            this.pbMenuShipping.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbMenuShipping.TabIndex = 1;
+            this.pbMenuShipping.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbMenuShipping, "Shipping");
+            this.pbMenuShipping.Click += new System.EventHandler(this.pbMenuShipping_Click);
+            this.pbMenuShipping.MouseEnter += new System.EventHandler(this.pbMenuShipping_MouseEnter);
+            this.pbMenuShipping.MouseLeave += new System.EventHandler(this.pbMenuShipping_MouseLeave);
             // 
             // pnlStatusTextContainer
             // 
@@ -315,8 +315,8 @@
             this.tlpMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbMenuSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMenuPickList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenuShipping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMenuInventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenuShipping)).EndInit();
             this.pnlStatusTextContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

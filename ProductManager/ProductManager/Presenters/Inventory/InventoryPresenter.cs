@@ -26,11 +26,6 @@ namespace ProductManager.Presenters.Inventory
             EventAggregator.Instance.Subscribe<InventoryProductSearch>(OnBtnShowSearchResultsView_Click);            
         }
 
-        //private void DisplaySearchResults(InventorySearchResults inventorySearchResults)
-        //{
-        //    inventoryView.DisplayResultsInProductEditor(inventorySearchResults);
-        //}
-
         private void OnBtnShowSearchResultsView_Click(InventoryShowSearchResultView obj)
         {
             inventoryView.ShowSearchResultsView();

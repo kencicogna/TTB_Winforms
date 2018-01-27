@@ -8,6 +8,7 @@ using ProductManager.Models;
 using System.Net;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ProductManager.Repository
 {
@@ -94,5 +95,60 @@ namespace ProductManager.Repository
 
             return inventoryItemList;
         }
-    }
-}
+
+        //internal void UpdateDB(InventoryItem inventoryItems)
+        internal void UpdateDB(DataGridView dgv)
+        {
+            int rowsUpdatedCount = 0;
+
+            using (SqlConnection conn = new SqlConnection())
+            {
+                // Create the connectionString (Trusted_Connection = Windows Authentication)
+                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
+                //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
+                conn.Open();
+
+                // Create the command
+                SqlCommand command = new SqlCommand(
+                    "UPDATE Inventory " +
+                    "SET Location=@Location, Cost=@Cost, Supplier=@Supplier, Weight=@Weight, UPC=@UPC " +
+                      "WHERE SKU = @SKU",
+                    conn);
+
+                // Add the parameters.
+                command.Parameters.Add(new SqlParameter("@Location", ""));
+                command.Parameters.Add(new SqlParameter("@Cost", ""));
+                command.Parameters.Add(new SqlParameter("@Supplier", ""));
+                command.Parameters.Add(new SqlParameter("@Weight", ""));
+                command.Parameters.Add(new SqlParameter("@UPC", ""));
+                command.Parameters.Add(new SqlParameter("@SKU", ""));
+
+                //foreach (var item in inventoryItems.VariationItems)
+                foreach (DataGridViewRow item in dgv.Rows)
+                {
+                    command.Parameters["@Location"].Value = item.Cells["Location"].Value?.ToString() ?? "";
+                    command.Parameters["@Cost"].Value = item.Cells["Cost"].Value?.ToString() ?? "";
+                    command.Parameters["@Supplier"].Value = item.Cells["Supplier"].Value?.ToString() ?? "";
+                    command.Parameters["@Weight"].Value = item.Cells["Weight"].Value?.ToString() ?? "";
+                    command.Parameters["@UPC"].Value = item.Cells["UPC"].Value?.ToString() ?? "";
+                    command.Parameters["@SKU"].Value = item.Cells["SKU"].Value?.ToString() ?? "";
+
+                    rowsUpdatedCount = command.ExecuteNonQuery();
+
+                    if ( rowsUpdatedCount != 1 )
+                    {
+                        throw new Exception("No Rows updated for SKU='" + item.Cells["SKU"] + "'");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Row Updated = '" + rowsUpdatedCount + "'");
+                    }
+
+                }
+
+            } // sqlconnection
+
+        } // UpdateDB
+
+    } // class
+} // namespace

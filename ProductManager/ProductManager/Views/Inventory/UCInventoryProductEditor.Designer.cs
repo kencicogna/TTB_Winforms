@@ -55,6 +55,7 @@
             this.dgvProductDetails.TabIndex = 0;
             this.dgvProductDetails.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellMouseEnter);
             this.dgvProductDetails.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellMouseLeave);
+            this.dgvProductDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellValueChanged);
             // 
             // UCInventoryProductEditor
             // 

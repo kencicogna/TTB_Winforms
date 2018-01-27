@@ -29,11 +29,12 @@ namespace ProductManager.Presenters.Inventory
 
         private void OnSearchTextChanged(InventoryProductSearch ps)
         {
-            ucInventorySearchResults.Focus();
-
             if (ps.SearchString.Length == 0)
                 return;
 
+            ucInventorySearchResults.Focus();
+
+            int found = 0;
             var tempfile = @"..\..\Images\temp.jpg";
             using (SqlConnection conn = new SqlConnection())
             {
@@ -61,6 +62,7 @@ namespace ProductManager.Presenters.Inventory
                 {
                     while (reader.Read())
                     {
+                        found++;
                         var inventoryItem = new InventoryItem();
                         inventoryItem.SKU = reader["SKU"].ToString();
                         inventoryItem.Title = reader["Title"].ToString();
@@ -99,7 +101,23 @@ namespace ProductManager.Presenters.Inventory
             } // sqlconnection
             System.IO.File.Delete(tempfile);
 
-            // search results view
+            if (found == 0)
+            {
+                EventAggregator.Instance.Publish(new SpeechBubble { Text = "No Results found" });
+            }
+
+            // Display search results
+            string foundMsg = $"found {found} products";
+            if ( found == 1 )
+            {
+                foundMsg = $"found {found} product";
+            }
+            else if ( found >= 18 )
+            {
+                foundMsg = $"found 18 or more products";
+            }
+            EventAggregator.Instance.Publish(new SpeechBubble { Text = foundMsg });
+
             ucInventorySearchResults.DisplaySearchResults(inventorySearchResults);
         }
     }

@@ -13,31 +13,25 @@ namespace ProductManager.Views.Inventory
 {
     public interface IInventoryView
     {
-        //String BinRack { get; set; }
-        //String Cost { get; set; }
-        //Image PrimaryPicture { get; set; }
-        //String PrimaryPictureURL { get; }
-        //String SKU { get; set; }
-        //String Title { get; set; }
-        //String Variations { get; set; }
         void ShowSearchResultsView();
         void ShowProductEditorView();
         void DisplayResultsInProductEditor(InventorySearchResults inventorySearchResults);
-        //void DisplaySearchResults(InventorySearchResults i);
     }
 
     public partial class UCInventoryView : UserControl, IInventoryView
     {
-        private readonly Control inventorySearchBar;
+        private readonly UCInventorySearchBar inventorySearchBar;
         private readonly Control inventorySearchResults;
         private readonly Control inventoryProductEditor;
 
-        public UCInventoryView(Control isb, Control isr, Control ipe)
+        public UCInventoryView(UCInventorySearchBar isb, Control isr, Control ipe)
         {
             InitializeComponent();
 
             inventorySearchBar = isb;
             inventorySearchBar.Dock = DockStyle.Fill;
+            inventorySearchBar.SetSearchBoxTextColorNormal();
+
             pnlSeachBarContainer.Controls.Clear();
             pnlSeachBarContainer.Controls.Add(inventorySearchBar);
 
@@ -77,7 +71,6 @@ namespace ProductManager.Views.Inventory
 
         private void UCInventoryView_Load(object sender, EventArgs e)
         {
-            //(UCInventorySearchBar)inventorySearchBar.SetSearchBoxFocus();
         }
 
         public void DisplayResultsInProductEditor(InventorySearchResults inventorySearchResults)

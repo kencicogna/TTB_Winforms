@@ -33,7 +33,7 @@ namespace ProductManager
             ucInventorySearchResults.Tag = new InventorySearchResultsPresenter(ucInventorySearchResults);
 
             var ucInventoryProductEditor = new UCInventoryProductEditor();
-            ucInventoryProductEditor.Tag = new InventoryProductEditorPresenter(ucInventoryProductEditor);
+            ucInventoryProductEditor.presenter = new InventoryProductEditorPresenter(ucInventoryProductEditor);
 
             var inventoryView = new UCInventoryView(ucInventorySearchBar, ucInventorySearchResults, ucInventoryProductEditor);
             inventoryView.Tag = new InventoryPresenter(inventoryView);

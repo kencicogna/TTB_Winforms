@@ -41,23 +41,25 @@
             // 
             // pnlSeachBarContainer
             // 
-            this.pnlSeachBarContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlSeachBarContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSeachBarContainer.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pnlSeachBarContainer.Location = new System.Drawing.Point(3, 3);
+            this.pnlSeachBarContainer.Location = new System.Drawing.Point(0, 0);
+            this.pnlSeachBarContainer.Margin = new System.Windows.Forms.Padding(0);
             this.pnlSeachBarContainer.Name = "pnlSeachBarContainer";
-            this.pnlSeachBarContainer.Size = new System.Drawing.Size(893, 62);
+            this.pnlSeachBarContainer.Size = new System.Drawing.Size(900, 60);
             this.pnlSeachBarContainer.TabIndex = 0;
             // 
             // pnlSearchResultsContainer
             // 
-            this.pnlSearchResultsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlSearchResultsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSearchResultsContainer.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnlSearchResultsContainer.Location = new System.Drawing.Point(3, 71);
+            this.pnlSearchResultsContainer.Location = new System.Drawing.Point(0, 65);
+            this.pnlSearchResultsContainer.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.pnlSearchResultsContainer.Name = "pnlSearchResultsContainer";
-            this.pnlSearchResultsContainer.Size = new System.Drawing.Size(896, 501);
+            this.pnlSearchResultsContainer.Size = new System.Drawing.Size(900, 505);
             this.pnlSearchResultsContainer.TabIndex = 1;
             // 
             // UCInventoryView
@@ -68,7 +70,7 @@
             this.Controls.Add(this.pnlSeachBarContainer);
             this.Controls.Add(this.pnlSearchResultsContainer);
             this.Name = "UCInventoryView";
-            this.Size = new System.Drawing.Size(902, 575);
+            this.Size = new System.Drawing.Size(900, 565);
             this.Load += new System.EventHandler(this.UCInventoryView_Load);
             this.ResumeLayout(false);
 

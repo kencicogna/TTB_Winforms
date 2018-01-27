@@ -9,6 +9,7 @@ using ProductManager.Repository;
 using ProductManager.Models;
 using System.Windows.Forms;
 using System.Drawing;
+using CloneExtensions;
 
 namespace ProductManager.Presenters.Inventory
 {
@@ -17,6 +18,8 @@ namespace ProductManager.Presenters.Inventory
         private UCInventoryProductEditor inventoryProductEditor;
         private readonly InventoryDAL inventoryDAL;
         private InventoryItem inventoryItems;
+        private InventoryItem inventoryItemsOrig;
+        private bool lockColumns;
 
         public InventoryProductEditorPresenter(UCInventoryProductEditor ipe)
         {
@@ -24,23 +27,60 @@ namespace ProductManager.Presenters.Inventory
 
             inventoryDAL = new InventoryDAL();
             inventoryItems = new InventoryItem();
+            inventoryItemsOrig = new InventoryItem();
 
             // Image Clicked
             EventAggregator.Instance.Subscribe<InventoryProductDetails>(OnParentProductSelected);
+            EventAggregator.Instance.Subscribe<InventoryProductEditorLockColumns>( SetLockColumns );
+            EventAggregator.Instance.Subscribe<InventoryProductEditorSave>( UpdateDB );
+            EventAggregator.Instance.Subscribe<InventoryProductEditorUndoChanges>( UndoChanges );
+        }
+
+        private void UndoChanges(InventoryProductEditorUndoChanges obj)
+        {
+            //
+            // NOTE: We don't really need the clone. I think we can just pass "inventoryItems", since I'm not
+            //       updating the class as the datagrid gets updated.
+            //
+            inventoryItems = inventoryItemsOrig.Clone();
+            PopulateDataGridView(inventoryItems);
+        }
+
+        private void UpdateDB(InventoryProductEditorSave obj)
+        {
+            var dgvProductDetails = inventoryProductEditor.GetDataGridView();
+
+            try
+            {
+                inventoryDAL.UpdateDB(dgvProductDetails);
+                MessageBox.Show("Changed Saved!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Save Failed! " + ex.ToString());
+            }
+        }
+
+        private void SetLockColumns(InventoryProductEditorLockColumns obj)
+        {
+            lockColumns = obj.locked;
         }
 
         public void OnParentProductSelected(InventoryProductDetails selectedItem)
         {
+            // query db, get all variations for this item
+            inventoryItems = inventoryDAL.GetAllVariations(selectedItem.inventoryItem);
+            inventoryItemsOrig = inventoryItems.Clone();
+
+            PopulateDataGridView(inventoryItems);
+        }
+
+        public void PopulateDataGridView(InventoryItem inventoryItems)
+        {
             var dgvProductDetails = inventoryProductEditor.GetDataGridView();
 
-            //dgvProductDetails.CellMouseEnter += new DataGridViewCellEventHandler(dgvProductDetails_CellMouseEnter);
-            //dgvProductDetails.CellMouseLeave += new DataGridViewCellEventHandler(dgvProductDetails_CellMouseLeave);
-
-            // query db, get all variations for this item
-            InventoryItem allItems = inventoryDAL.GetAllVariations(selectedItem.inventoryItem);
-
             // populate the product editor view
-            if (allItems != null)
+            if (inventoryItems.VariationItems.Count > 0)
             {
                 // TODO: I'm guessing this is not the right place for this
                 if (dgvProductDetails.Columns.Count == 0)
@@ -51,7 +91,7 @@ namespace ProductManager.Presenters.Inventory
                     dgvProductDetails.Columns.Add("SKU", "SKU");
                     dgvProductDetails.Columns.Add("Variation", "Variation");
                     dgvProductDetails.Columns.Add("Title", "Title");
-                    dgvProductDetails.Columns.Add("Cost", "Cost");
+                    dgvProductDetails.Columns.Add("Cost","Cost");
                     dgvProductDetails.Columns.Add("Supplier", "Supplier");
                     dgvProductDetails.Columns.Add("Weight", "Weight");
                     dgvProductDetails.Columns.Add("UPC", "UPC");
@@ -62,10 +102,11 @@ namespace ProductManager.Presenters.Inventory
 
                 dgvProductDetails.Rows.Clear();
                 dgvProductDetails.RowTemplate.Height = 100;
-                foreach (InventoryItem i in allItems.VariationItems)
+
+                // Add data rows
+                foreach (InventoryItem i in inventoryItems.VariationItems)
                 {
                     Image thumb = i.PrimaryPicture.GetThumbnailImage(100, 100, null, IntPtr.Zero);
-
                     dgvProductDetails.Rows.Add(thumb, i.SKU, i.Variation, i.Title, i.Cost, i.Supplier, i.Weight, i.UPC, i.Location);
                 }
                 dgvProductDetails.RowHeadersVisible = false;
@@ -73,10 +114,29 @@ namespace ProductManager.Presenters.Inventory
             }
             else
             {
-                MessageBox.Show("Test");
+                MessageBox.Show("Error... OnParentProductSelected()");
             }
 
             dgvProductDetails.Focus();
+        }
+
+        internal void updateGrid(int row, int col, string val)
+        {
+            if (lockColumns == false) return;
+
+            var dgv= inventoryProductEditor.GetDataGridView();
+
+            // Temporarily remove event handler
+            inventoryProductEditor.RemoveCellChangedEventHandler();
+
+            for (int r = 0; r < dgv.RowCount; r++)
+            {
+                if (r==row) continue; // skip current row
+                dgv.Rows[r].Cells[col].Value = val;
+            }
+
+            // Restore event handler
+            inventoryProductEditor.AddCellChangedEventHandler();
         }
 
     }

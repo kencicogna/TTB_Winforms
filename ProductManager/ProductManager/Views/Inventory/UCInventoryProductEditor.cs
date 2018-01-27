@@ -18,12 +18,13 @@ namespace ProductManager.Views.Inventory
 
     public partial class UCInventoryProductEditor : UserControl, IInventoryProductEditor
     {
-        InventoryProductEditorPresenter presenter;
+        public InventoryProductEditorPresenter presenter { get; set; }
 
         public UCInventoryProductEditor()
         {
             InitializeComponent();
-            presenter = (InventoryProductEditorPresenter)this.Tag;
+            dgvProductDetails.DefaultCellStyle.SelectionBackColor = Color.AliceBlue;
+            dgvProductDetails.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public DataGridView GetDataGridView()
@@ -35,16 +36,40 @@ namespace ProductManager.Views.Inventory
         {
             int column = e.ColumnIndex;
             int row = e.RowIndex;
-            if (row>=0)
-              dgvProductDetails.Rows[row].Selected = true;
+            if (row >= 0)
+            {
+                dgvProductDetails.Rows[row].Selected = true;
+            }
         }
 
         private void dgvProductDetails_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             int column = e.ColumnIndex;
             int row = e.RowIndex;
-            if (row>=0)
-            dgvProductDetails.Rows[row].Selected = false;
+            if (row >= 0)
+            { 
+                dgvProductDetails.Rows[row].Selected = false;
+            }
+        }
+
+        private void dgvProductDetails_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            int col = e.ColumnIndex;
+            string cellValue = dgvProductDetails.Rows[row].Cells[col].Value?.ToString();
+            string sku = dgvProductDetails.Rows[row].Cells["SKU"].Value?.ToString();
+
+            presenter.updateGrid(row,col,cellValue);
+        }
+
+        internal void AddCellChangedEventHandler()
+        {
+            dgvProductDetails.CellValueChanged += dgvProductDetails_CellValueChanged;
+        }
+
+        internal void RemoveCellChangedEventHandler()
+        {
+            dgvProductDetails.CellValueChanged -= dgvProductDetails_CellValueChanged;
         }
     }
 }

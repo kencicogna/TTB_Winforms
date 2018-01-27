@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloneExtensions, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloneExtensions.1.4.2\lib\net46\CloneExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,11 +58,16 @@
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IApplicationEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
-    <Compile Include="Events\InventoryProductDetails.cs" />
+    <Compile Include="Events\InventoryPageSetup.cs" />
+    <Compile Include="Events\InventoryProductEditorUndoChanges.cs" />
+    <Compile Include="Events\InventoryProductEditorSave.cs" />
+    <Compile Include="Events\InventoryProductEditorLockColumns.cs" />
+    <Compile Include="Events\InventoryProduct.cs" />
     <Compile Include="Events\InventoryProductSearch.cs" />
     <Compile Include="Events\InventorySearchResult.cs" />
     <Compile Include="Events\InventoryShowProductEditorView.cs" />
     <Compile Include="Events\InventoryShowSearchResultView.cs" />
+    <Compile Include="Events\SpeechBubble.cs" />
     <Compile Include="Models\InventoryItem.cs" />
     <Compile Include="Models\InventorySearchResults.cs" />
     <Compile Include="Models\InventoryView.cs" />
@@ -163,6 +172,7 @@
     <None Include="BTDataDataSet.xss">
       <DependentUpon>BTDataDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
