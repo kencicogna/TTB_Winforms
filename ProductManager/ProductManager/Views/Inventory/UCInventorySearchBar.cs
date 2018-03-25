@@ -119,14 +119,14 @@ namespace ProductManager.Views.Inventory
             string tag = pbLockColumns.Tag.ToString();
             if ( tag.Equals("Unlocked") == true)
             {
-                pbLockColumns.BackgroundImage = Image.FromFile("..\\..\\Images\\icons\\Lock30.png");
+                pbLockColumns.BackgroundImage = Image.FromFile(@"..\..\Images\icons\Lock30.png");
                 btnLockColumns.Text = "Unlock Columns";
                 pbLockColumns.Tag = "Locked";
                 EventAggregator.Instance.Publish(new InventoryProductEditorLockColumns { locked = true });
             }
             else
             {
-                pbLockColumns.BackgroundImage = Image.FromFile("..\\..\\Images\\icons\\Unlock30.png");
+                pbLockColumns.BackgroundImage = Image.FromFile(@"..\..\Images\icons\Unlock30.png");
                 btnLockColumns.Text = "Lock Columns";
                 pbLockColumns.Tag = "Unlocked";
                 EventAggregator.Instance.Publish(new InventoryProductEditorLockColumns { locked = false });

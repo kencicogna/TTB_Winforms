@@ -43,7 +43,8 @@ namespace ProductManager.Repository
                 SqlCommand command = new SqlCommand(
                     "SELECT *" +
                       "FROM Inventory " +
-                      "WHERE title = @titleSearch",
+                     "WHERE title = @titleSearch " +
+                       "AND active=1",
                     conn);
 
                 // Add the parameters.
@@ -111,8 +112,9 @@ namespace ProductManager.Repository
                 // Create the command
                 SqlCommand command = new SqlCommand(
                     "UPDATE Inventory " +
-                    "SET Location=@Location, Cost=@Cost, Supplier=@Supplier, Weight=@Weight, UPC=@UPC " +
-                      "WHERE SKU = @SKU",
+                       "SET Location=@Location, Cost=@Cost, Supplier=@Supplier, Weight=@Weight, UPC=@UPC " +
+                     "WHERE SKU = @SKU " +
+                       "AND active=1",
                     conn);
 
                 // Add the parameters.
@@ -137,12 +139,13 @@ namespace ProductManager.Repository
 
                     if ( rowsUpdatedCount != 1 )
                     {
-                        throw new Exception("No Rows updated for SKU='" + item.Cells["SKU"] + "'");
+                        //throw new Exception("No Rows updated for SKU='" + item.Cells["SKU"] + "'");
+                        MessageBox.Show("WARNING: No Row Updated for SKU='" + item.Cells["SKU"] + "'"); 
                     }
-                    else
-                    {
-                        MessageBox.Show("Row Updated = '" + rowsUpdatedCount + "'");
-                    }
+                    //else
+                    //{
+                    //    MessageBox.Show("Row Updated = '" + rowsUpdatedCount + "'");
+                    //}
 
                 }
 

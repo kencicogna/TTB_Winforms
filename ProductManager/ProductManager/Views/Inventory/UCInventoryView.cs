@@ -58,6 +58,7 @@ namespace ProductManager.Views.Inventory
 
         public void ShowProductEditorView()
         {
+            // TODO: pass object name and use a 'get type' method instead of Control[0]......
             if (pnlSearchResultsContainer.Controls.Count == 0)
             {
                 pnlSearchResultsContainer.Controls.Add(inventoryProductEditor);

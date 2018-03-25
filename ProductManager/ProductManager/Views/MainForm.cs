@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductManager.Presenters;
 using ProductManager.Events;
+using System.IO;
 
 namespace ProductManager.Views
 {
@@ -20,6 +21,9 @@ namespace ProductManager.Views
     public partial class MainForm : Form, IMainFormView
     {
         private readonly Control inventoryView;
+        public static string applicationPath = AppDomain.CurrentDomain.BaseDirectory;
+        //public static string applicationPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
 
         public void SetStatus(string statusText)
         {
@@ -48,18 +52,22 @@ namespace ProductManager.Views
         {
             if (tabControlMain.SelectedTab.Text == "Inventory")
             {
+                //pbAvatar.ImageLocation = applicationPath + @"..\..\Images\racoon.jpg";
                 pbAvatar.ImageLocation = @"..\..\Images\racoon.jpg";
             }
             else if (tabControlMain.SelectedTab.Text == "Shipping")
             {
+                //pbAvatar.ImageLocation = applicationPath + @"..\..\Images\fox.png";
                 pbAvatar.ImageLocation = @"..\..\Images\fox.png";
             }
             else if (tabControlMain.SelectedTab.Text == "PickList")
             {
+                //pbAvatar.ImageLocation = applicationPath + @"..\..\Images\dear.png";
                 pbAvatar.ImageLocation = @"..\..\Images\dear.png";
             }
             else if (tabControlMain.SelectedTab.Text == "Settings")
             {
+                //pbAvatar.ImageLocation = applicationPath + @"..\..\Images\owl.png";
                 pbAvatar.ImageLocation = @"..\..\Images\owl.png";
             }
 

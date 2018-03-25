@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.IO;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace ProductManager.Presenters.Inventory
 {
@@ -17,6 +18,7 @@ namespace ProductManager.Presenters.Inventory
     {
         private UCInventorySearchResults ucInventorySearchResults;
         private readonly InventorySearchResults inventorySearchResults;
+        public static string applicationPath = AppDomain.CurrentDomain.BaseDirectory;
 
         public InventorySearchResultsPresenter(UCInventorySearchResults isr)
         {
@@ -35,6 +37,7 @@ namespace ProductManager.Presenters.Inventory
             ucInventorySearchResults.Focus();
 
             int found = 0;
+            //var tempfile = applicationPath + @"..\..\Images\temp.jpg";
             var tempfile = @"..\..\Images\temp.jpg";
             using (SqlConnection conn = new SqlConnection())
             {
@@ -49,7 +52,7 @@ namespace ProductManager.Presenters.Inventory
                 SqlCommand command = new SqlCommand(
                     "SELECT top 18 * " + //sku, title, variation, cost, Location as binrack, image_url " +
                       "FROM Inventory " +
-                      "WHERE title like @titleSearch or sku like @skuSearch or upc like @upcSearch", 
+                      "WHERE (title like @titleSearch or sku like @skuSearch or upc like @upcSearch) and active=1", 
                     conn);
 
                 // Add the parameters.
@@ -84,6 +87,7 @@ namespace ProductManager.Presenters.Inventory
                             }
                             catch
                             { 
+                                
                                 File.Copy(@"..\..\Images\missing.jpg", tempfile);
                             }
 
@@ -119,6 +123,12 @@ namespace ProductManager.Presenters.Inventory
             EventAggregator.Instance.Publish(new SpeechBubble { Text = foundMsg });
 
             ucInventorySearchResults.DisplaySearchResults(inventorySearchResults);
+
+            if (found > 0 && Regex.IsMatch(ps.SearchString, @"\d{8,}"))
+            {
+                EventAggregator.Instance.Publish(new InventoryProductDetails { inventoryItem = (InventoryItem) inventorySearchResults.InventoryItems[0] });
+                EventAggregator.Instance.Publish(new InventoryShowProductEditorView());
+            }
         }
     }
 }

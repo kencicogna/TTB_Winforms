@@ -23,7 +23,7 @@ namespace ProductManager.Presenters.Inventory
         private void OnSetSearchBarFocus(InventoryProductSearch obj)
         {
             EventAggregator.Instance.Publish(new SpeechBubble { Text = "Enter SKU, UPC, or any part of Title to search for products" });
-            inventorySearchBar.SetSearchBoxFocus();
+            //inventorySearchBar.SetSearchBoxFocus();
         }
     }
 }

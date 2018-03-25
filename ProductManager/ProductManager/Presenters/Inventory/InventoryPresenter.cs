@@ -23,7 +23,7 @@ namespace ProductManager.Presenters.Inventory
 
             // Adds Search Results control to Inventory view
             EventAggregator.Instance.Subscribe<InventoryShowSearchResultView>(OnBtnShowSearchResultsView_Click);
-            EventAggregator.Instance.Subscribe<InventoryProductSearch>(OnBtnShowSearchResultsView_Click);            
+            //EventAggregator.Instance.Subscribe<InventoryProductSearch>(OnBtnShowSearchResultsView_Click);            
         }
 
         private void OnBtnShowSearchResultsView_Click(InventoryShowSearchResultView obj)
