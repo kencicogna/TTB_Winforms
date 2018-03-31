@@ -41,7 +41,8 @@ namespace ProductManager.Presenters.Inventory
                 inventorySearchResults.InventoryItems.Clear();
 
                 // Create the connectionString (Trusted_Connection is used to denote the connection uses Windows Authentication)
-                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
+                conn.ConnectionString = "Server=192.168.0.17,50088;Initial Catalog=BTData;Network Library=DBMSSOCN;User ID=shipit2;Password=shipit2";
+                //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
                 //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
                 conn.Open();
 
@@ -49,7 +50,7 @@ namespace ProductManager.Presenters.Inventory
                 SqlCommand command = new SqlCommand(
                     "SELECT top 18 * " + //sku, title, variation, cost, Location as binrack, image_url " +
                       "FROM Inventory " +
-                      "WHERE title like @titleSearch or sku like @skuSearch or upc like @upcSearch", 
+                      "WHERE (title like @titleSearch or sku like @skuSearch or upc like @upcSearch) and active=1", 
                     conn);
 
                 // Add the parameters.

@@ -35,7 +35,8 @@ namespace ProductManager.Repository
 
                 // Create the connectionString
                 // Trusted_Connection is used to denote the connection uses Windows Authentication
-                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
+                conn.ConnectionString = "Server=192.168.0.17,50088;Initial Catalog=BTData;Network Library=DBMSSOCN;User ID=shipit2;Password=shipit2";
+                //conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
                 //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
                 conn.Open();
 
@@ -104,15 +105,16 @@ namespace ProductManager.Repository
             using (SqlConnection conn = new SqlConnection())
             {
                 // Create the connectionString (Trusted_Connection = Windows Authentication)
-                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
+                conn.ConnectionString = "Server=192.168.0.17,50088;Initial Catalog=BTData;Network Library=DBMSSOCN;User ID=shipit2;Password=shipit2";
+                //conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
                 //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
                 conn.Open();
 
                 // Create the command
                 SqlCommand command = new SqlCommand(
                     "UPDATE Inventory " +
-                    "SET Location=@Location, Cost=@Cost, Supplier=@Supplier, Weight=@Weight, UPC=@UPC " +
-                      "WHERE SKU = @SKU",
+                    "SET Location=@Location, Cost=@Cost, Supplier=@Supplier, Weight=@Weight, UPC=@UPC, Last_modified=SYSDATETIME()" +
+                      "WHERE SKU = @SKU and active=1",
                     conn);
 
                 // Add the parameters.
@@ -135,14 +137,15 @@ namespace ProductManager.Repository
 
                     rowsUpdatedCount = command.ExecuteNonQuery();
 
+
                     if ( rowsUpdatedCount != 1 )
                     {
-                        throw new Exception("No Rows updated for SKU='" + item.Cells["SKU"] + "'");
+                        throw new Exception(rowsUpdatedCount+" Rows updated for SKU='" + item.Cells["SKU"] + "'");
                     }
-                    else
-                    {
-                        MessageBox.Show("Row Updated = '" + rowsUpdatedCount + "'");
-                    }
+                    //else
+                    //{
+                    //    MessageBox.Show("Row Updated = '" + rowsUpdatedCount + "'");
+                    //}
 
                 }
 
