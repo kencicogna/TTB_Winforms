@@ -9,24 +9,29 @@ using System.Net;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace ProductManager.Repository
 {
     class InventoryDAL
     {
-        public InventoryItem inventoryItemList { get; set; }
+        public InventoryItem InventoryItemList { get; set; }
+        private readonly string ConnectionString;
+
         public InventoryDAL()
         {
             // TODO: this is a little deceptive, an item will not always have variations, 
             //       but the item is still stored in VariationItems list.
             // List of Items (held in the VariationsItems property) 
-            inventoryItemList = new InventoryItem();
+            InventoryItemList = new InventoryItem();
+            ConnectionString = ConfigurationManager.ConnectionStrings["ProductManager.Properties.Settings.BTDataConnectionString"].ConnectionString;
+
         }
 
         public InventoryItem GetAllVariations(InventoryItem parentItem)
         {
             // Clear out list of items
-            inventoryItemList.VariationItems.Clear();
+            InventoryItemList.VariationItems.Clear();
 
             var tempfile = @"..\..\Images\temp.jpg";
             using (SqlConnection conn = new SqlConnection())
@@ -35,8 +40,10 @@ namespace ProductManager.Repository
 
                 // Create the connectionString
                 // Trusted_Connection is used to denote the connection uses Windows Authentication
-                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
+                //conn.ConnectionString = "Server=192.168.0.17,50088;Initial Catalog=BTData;Network Library=DBMSSOCN;User ID=shipit2;Password=shipit2";
+                //conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
                 //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
+                conn.ConnectionString = ConnectionString;
                 conn.Open();
 
                 // Create the command
@@ -85,7 +92,7 @@ namespace ProductManager.Repository
                                 //inventoryItem.Title = reader[1].ToString();
                             }
 
-                            inventoryItemList.VariationItems.Add(inventoryItem);
+                            InventoryItemList.VariationItems.Add(inventoryItem);
                         }
 
                     } // while(reader.Read()))
@@ -94,7 +101,7 @@ namespace ProductManager.Repository
             } // sqlconnection
             System.IO.File.Delete(tempfile);
 
-            return inventoryItemList;
+            return InventoryItemList;
         }
 
         //internal void UpdateDB(InventoryItem inventoryItems)
@@ -105,16 +112,17 @@ namespace ProductManager.Repository
             using (SqlConnection conn = new SqlConnection())
             {
                 // Create the connectionString (Trusted_Connection = Windows Authentication)
-                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
+                //conn.ConnectionString = "Server=192.168.0.17,50088;Initial Catalog=BTData;Network Library=DBMSSOCN;User ID=shipit2;Password=shipit2";
+                //conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
                 //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
+                conn.ConnectionString = ConnectionString;
                 conn.Open();
 
                 // Create the command
                 SqlCommand command = new SqlCommand(
                     "UPDATE Inventory " +
-                       "SET Location=@Location, Cost=@Cost, Supplier=@Supplier, Weight=@Weight, UPC=@UPC " +
-                     "WHERE SKU = @SKU " +
-                       "AND active=1",
+                    "SET Location=@Location, Cost=@Cost, Supplier=@Supplier, Weight=@Weight, UPC=@UPC, Last_modified=SYSDATETIME()" +
+                      "WHERE SKU = @SKU and active=1",
                     conn);
 
                 // Add the parameters.
@@ -139,8 +147,7 @@ namespace ProductManager.Repository
 
                     if ( rowsUpdatedCount != 1 )
                     {
-                        //throw new Exception("No Rows updated for SKU='" + item.Cells["SKU"] + "'");
-                        MessageBox.Show("WARNING: No Row Updated for SKU='" + item.Cells["SKU"] + "'"); 
+                        throw new Exception(rowsUpdatedCount+" Rows updated for SKU='" + item.Cells["SKU"] + "'");
                     }
                     //else
                     //{

@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.IO;
 using System.Drawing;
+using System.Configuration;
 using System.Text.RegularExpressions;
 
 namespace ProductManager.Presenters.Inventory
@@ -18,12 +19,14 @@ namespace ProductManager.Presenters.Inventory
     {
         private UCInventorySearchResults ucInventorySearchResults;
         private readonly InventorySearchResults inventorySearchResults;
+        private readonly string ConnectionString;
         public static string applicationPath = AppDomain.CurrentDomain.BaseDirectory;
 
         public InventorySearchResultsPresenter(UCInventorySearchResults isr)
         {
             ucInventorySearchResults = isr;
             inventorySearchResults = new InventorySearchResults();
+            ConnectionString = ConfigurationManager.ConnectionStrings["ProductManager.Properties.Settings.BTDataConnectionString"].ConnectionString;
 
             // Query DB using search string, populate inventorySearchResults.InventoryItems
             EventAggregator.Instance.Subscribe<InventoryProductSearch>(OnSearchTextChanged);            
@@ -44,8 +47,9 @@ namespace ProductManager.Presenters.Inventory
                 inventorySearchResults.InventoryItems.Clear();
 
                 // Create the connectionString (Trusted_Connection is used to denote the connection uses Windows Authentication)
-                conn.ConnectionString = "Server=KEN-LAPTOP\\SQLEXPRESS;Database=BTData;Trusted_Connection=true";
                 //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
+                //conn.ConnectionString = "Server=MEGATRON\\SQLEXPRESS;Database=TTBDB;Trusted_Connection=true";
+                conn.ConnectionString = ConnectionString;
                 conn.Open();
 
                 // Create the command
@@ -87,7 +91,6 @@ namespace ProductManager.Presenters.Inventory
                             }
                             catch
                             { 
-                                
                                 File.Copy(@"..\..\Images\missing.jpg", tempfile);
                             }
 
