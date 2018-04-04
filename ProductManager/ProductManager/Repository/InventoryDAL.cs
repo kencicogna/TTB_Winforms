@@ -71,6 +71,7 @@ namespace ProductManager.Repository
                         inventoryItem.Supplier = reader["supplier"].ToString();
                         inventoryItem.Weight = (int)reader["weight"];
                         inventoryItem.UPC = reader["UPC"].ToString();
+                        inventoryItem.Location = reader["Location"].ToString();
 
                         var url = reader["image_url"].ToString();
 

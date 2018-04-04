@@ -127,7 +127,29 @@ namespace ProductManager.Presenters.Inventory
 
             ucInventorySearchResults.DisplaySearchResults(inventorySearchResults);
 
-            if (found > 0 && Regex.IsMatch(ps.SearchString, @"\d{8,}"))
+            // Go directory to the Product Details screen, if 
+            //   1. Only one item is found
+            //   2. a UPC is searched for and found
+            bool gotoProductDetailsScreen = false;
+            if ( found == 1 )
+            {
+                gotoProductDetailsScreen = true;
+            }
+            else if ( found > 1 && Regex.IsMatch(ps.SearchString, @"^\d{8,}$") )
+            {
+                var titleCount = new Dictionary<string, int>();
+
+                foreach (InventoryItem i in inventorySearchResults.InventoryItems)
+                {
+                    if (!titleCount.ContainsKey(i.Title))
+                        titleCount.Add(i.Title, 1);
+                }
+
+                if(titleCount.Keys.Count==1)
+                    gotoProductDetailsScreen = true;
+            }
+
+            if (gotoProductDetailsScreen )
             {
                 EventAggregator.Instance.Publish(new InventoryProductDetails { inventoryItem = (InventoryItem) inventorySearchResults.InventoryItems[0] });
                 EventAggregator.Instance.Publish(new InventoryShowProductEditorView());

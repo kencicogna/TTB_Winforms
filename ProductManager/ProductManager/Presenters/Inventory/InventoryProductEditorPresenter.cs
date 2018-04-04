@@ -96,8 +96,12 @@ namespace ProductManager.Presenters.Inventory
                     dgvProductDetails.Columns.Add("Weight", "Weight");
                     dgvProductDetails.Columns.Add("UPC", "UPC");
                     dgvProductDetails.Columns.Add("Location", "Location");
+
                     dgvProductDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     dgvProductDetails.Columns["Title"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvProductDetails.Columns["SKU"].ReadOnly = true;
+                    dgvProductDetails.Columns["Title"].ReadOnly = true;
+                    dgvProductDetails.Columns["Variation"].ReadOnly = true;
                 }
 
                 dgvProductDetails.Rows.Clear();
