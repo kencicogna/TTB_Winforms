@@ -107,6 +107,12 @@
     <Compile Include="Presenters\MainFormPresenter.cs" />
     <Compile Include="Repository\InventoryDAL.cs" />
     <Compile Include="Events\InventoryProductDetailsLineItems.cs" />
+    <Compile Include="formSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSplashScreen.Designer.cs">
+      <DependentUpon>formSplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Inventory\UCInventoryProductEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     <Compile Include="Views\UserControlShipping.Designer.cs">
       <DependentUpon>UserControlShipping.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="formSplashScreen.resx">
+      <DependentUpon>formSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,6 +10,7 @@ using ProductManager.Models;
 using System.Windows.Forms;
 using System.Drawing;
 using CloneExtensions;
+using System.Threading;
 
 namespace ProductManager.Presenters.Inventory
 {
@@ -46,6 +47,11 @@ namespace ProductManager.Presenters.Inventory
             PopulateDataGridView(inventoryItems);
         }
 
+        public void ShowSplashScreen()
+        {
+                Application.Run(new formSplashScreen());
+        }
+
         private void UpdateDB(InventoryProductEditorSave obj)
         {
             var dgvProductDetails = inventoryProductEditor.GetDataGridView();
@@ -53,7 +59,12 @@ namespace ProductManager.Presenters.Inventory
             try
             {
                 inventoryDAL.UpdateDB(dgvProductDetails);
-                MessageBox.Show("Changed Saved!");
+                //MessageBox.Show("Change Saved!");
+                Thread t = new Thread(new ThreadStart(ShowSplashScreen));
+                t.Start();
+                Thread.Sleep(1500);
+                t.Abort();
+
             }
             catch (Exception ex)
             {
